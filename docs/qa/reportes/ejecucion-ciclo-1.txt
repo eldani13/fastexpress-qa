@@ -1,0 +1,404 @@
+
+==================== 1. Entorno ====================
+Python 3.13.16
+Tue Oct 13 18:22:59 -05 2026
+
+==================== 2. Instalación ====================
+Dependencias instaladas
+
+==================== 3. Pruebas unitarias y de API con cobertura ====================
+============================= test session starts ==============================
+platform linux -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- /home/claude/fastexpress/backend/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/fastexpress/backend
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.15.1, cov-7.1.0
+collecting ... collected 306 items / 13 deselected / 293 selected
+
+tests/api/test_api.py::test_health PASSED                                [  0%]
+tests/api/test_api.py::test_cotizacion_exitosa_con_desglose PASSED       [  0%]
+tests/api/test_api.py::test_acepta_numeros_como_texto PASSED             [  1%]
+tests/api/test_api.py::test_errores_de_negocio[peso-cero] PASSED         [  1%]
+tests/api/test_api.py::test_errores_de_negocio[peso-excedido] PASSED     [  1%]
+tests/api/test_api.py::test_errores_de_negocio[peso-3-decimales] PASSED  [  2%]
+tests/api/test_api.py::test_errores_de_negocio[monto-cero] PASSED        [  2%]
+tests/api/test_api.py::test_errores_de_negocio[monto-excedido] PASSED    [  2%]
+tests/api/test_api.py::test_entrada_mal_formada[peso-no-numerico] PASSED [  3%]
+tests/api/test_api.py::test_entrada_mal_formada[cliente-desconocido] PASSED [  3%]
+tests/api/test_api.py::test_entrada_mal_formada[envio-desconocido] PASSED [  3%]
+tests/api/test_api.py::test_entrada_mal_formada[campos-faltantes] PASSED [  4%]
+tests/api/test_api.py::test_entrada_mal_formada[cuerpo-vacio] PASSED     [  4%]
+tests/api/test_api.py::test_DEF004_numeros_enormes_se_rechazan_sin_error_500[peso-29-digitos] XFAIL [  4%]
+tests/api/test_api.py::test_DEF004_numeros_enormes_se_rechazan_sin_error_500[peso-1e308] XFAIL [  5%]
+tests/api/test_api.py::test_DEF004_numeros_enormes_se_rechazan_sin_error_500[monto-29-digitos] XFAIL [  5%]
+tests/api/test_api.py::test_metodo_no_permitido PASSED                   [  5%]
+tests/api/test_api.py::test_frontend_servido_sin_ocultar_la_api PASSED   [  6%]
+tests/api/test_api.py::test_documentacion_openapi_disponible PASSED      [  6%]
+tests/unit/test_caja_blanca.py::test_caminos_calcular_tarifa[C1-base] PASSED [  6%]
+tests/unit/test_caja_blanca.py::test_caminos_calcular_tarifa[C2-D1-falso] PASSED [  7%]
+tests/unit/test_caja_blanca.py::test_caminos_calcular_tarifa[C3-D2-verdadero] PASSED [  7%]
+tests/unit/test_caja_blanca.py::test_caminos_calcular_tarifa[C4-D3-verdadero] PASSED [  7%]
+tests/unit/test_caja_blanca.py::test_caminos_calcular_tarifa[C5-D4-verdadero] PASSED [  8%]
+tests/unit/test_caja_blanca.py::test_caminos_calcular_tarifa[C6-D5-verdadero] PASSED [  8%]
+tests/unit/test_caja_blanca.py::test_V1_camino_valido PASSED             [  8%]
+tests/unit/test_caja_blanca.py::test_caminos_validar_cotizacion[V2-D1-peso-decimales] PASSED [  9%]
+tests/unit/test_caja_blanca.py::test_caminos_validar_cotizacion[V3-D2-peso-bajo-minimo] PASSED [  9%]
+tests/unit/test_caja_blanca.py::test_caminos_validar_cotizacion[V4-D3-peso-sobre-maximo] PASSED [  9%]
+tests/unit/test_caja_blanca.py::test_caminos_validar_cotizacion[V5-D4-monto-decimales] PASSED [ 10%]
+tests/unit/test_caja_blanca.py::test_caminos_validar_cotizacion[V6-D5-monto-bajo-minimo] PASSED [ 10%]
+tests/unit/test_caja_blanca.py::test_caminos_validar_cotizacion[V7-D6-monto-sobre-maximo] PASSED [ 10%]
+tests/unit/test_caja_negra_monto.py::test_particiones_validas_monto[CE-M2-sin-seguro-valida] PASSED [ 11%]
+tests/unit/test_caja_negra_monto.py::test_particiones_validas_monto[CE-M3-con-seguro-valida] PASSED [ 11%]
+tests/unit/test_caja_negra_monto.py::test_particiones_invalidas_monto[CE-M1-negativo-invalida] PASSED [ 11%]
+tests/unit/test_caja_negra_monto.py::test_particiones_invalidas_monto[CE-M4-mayor-1000-invalida] PASSED [ 12%]
+tests/unit/test_caja_negra_monto.py::test_particiones_invalidas_monto[CE-M5-no-numerico-invalida] PASSED [ 12%]
+tests/unit/test_caja_negra_monto.py::test_particiones_invalidas_monto[CE-M6-mas-de-2-decimales-invalida] PASSED [ 12%]
+tests/unit/test_caja_negra_monto.py::test_valores_limite_validos_monto[BVA-M02-minimo] PASSED [ 13%]
+tests/unit/test_caja_negra_monto.py::test_valores_limite_validos_monto[BVA-M03-minimo+1] PASSED [ 13%]
+tests/unit/test_caja_negra_monto.py::test_valores_limite_validos_monto[BVA-M04-umbral-1] PASSED [ 13%]
+tests/unit/test_caja_negra_monto.py::test_valores_limite_validos_monto[BVA-M05-umbral] PASSED [ 14%]
+tests/unit/test_caja_negra_monto.py::test_valores_limite_validos_monto[BVA-M06-umbral+1] PASSED [ 14%]
+tests/unit/test_caja_negra_monto.py::test_valores_limite_validos_monto[BVA-M07-umbral+2] PASSED [ 15%]
+tests/unit/test_caja_negra_monto.py::test_valores_limite_validos_monto[BVA-M08-maximo-1] PASSED [ 15%]
+tests/unit/test_caja_negra_monto.py::test_valores_limite_validos_monto[BVA-M09-maximo] PASSED [ 15%]
+tests/unit/test_caja_negra_monto.py::test_valores_limite_invalidos_monto[BVA-M01-cero] PASSED [ 16%]
+tests/unit/test_caja_negra_monto.py::test_valores_limite_invalidos_monto[BVA-M10-maximo+1] PASSED [ 16%]
+tests/unit/test_caja_negra_peso.py::test_particiones_validas_peso[CE2-tramo1-valida] PASSED [ 16%]
+tests/unit/test_caja_negra_peso.py::test_particiones_validas_peso[CE3-tramo2-valida] PASSED [ 17%]
+tests/unit/test_caja_negra_peso.py::test_particiones_invalidas_peso[CE1-negativo-invalida] PASSED [ 17%]
+tests/unit/test_caja_negra_peso.py::test_particiones_invalidas_peso[CE4-mayor-20-invalida] PASSED [ 17%]
+tests/unit/test_caja_negra_peso.py::test_particiones_invalidas_peso[CE5-no-numerico-invalida] PASSED [ 18%]
+tests/unit/test_caja_negra_peso.py::test_particiones_invalidas_peso[CE6-mas-de-2-decimales-invalida] PASSED [ 18%]
+tests/unit/test_caja_negra_peso.py::test_valores_limite_validos_peso[BVA-02-minimo] PASSED [ 18%]
+tests/unit/test_caja_negra_peso.py::test_valores_limite_validos_peso[BVA-03-minimo+1] PASSED [ 19%]
+tests/unit/test_caja_negra_peso.py::test_valores_limite_validos_peso[BVA-04-limite-tramo1-1] PASSED [ 19%]
+tests/unit/test_caja_negra_peso.py::test_valores_limite_validos_peso[BVA-05-limite-tramo1] PASSED [ 19%]
+tests/unit/test_caja_negra_peso.py::test_valores_limite_validos_peso[BVA-06-inicio-tramo2] PASSED [ 20%]
+tests/unit/test_caja_negra_peso.py::test_valores_limite_validos_peso[BVA-07-inicio-tramo2+1] PASSED [ 20%]
+tests/unit/test_caja_negra_peso.py::test_valores_limite_validos_peso[BVA-08-maximo-1] PASSED [ 20%]
+tests/unit/test_caja_negra_peso.py::test_valores_limite_validos_peso[BVA-09-maximo] PASSED [ 21%]
+tests/unit/test_caja_negra_peso.py::test_valores_limite_invalidos_peso[BVA-01-cero] PASSED [ 21%]
+tests/unit/test_caja_negra_peso.py::test_valores_limite_invalidos_peso[BVA-10-maximo+1] PASSED [ 21%]
+tests/unit/test_robustez.py::test_peso_no_numerico_es_rechazado[nulo] PASSED [ 22%]
+tests/unit/test_robustez.py::test_peso_no_numerico_es_rechazado[vacio] PASSED [ 22%]
+tests/unit/test_robustez.py::test_peso_no_numerico_es_rechazado[booleano] PASSED [ 22%]
+tests/unit/test_robustez.py::test_peso_no_numerico_es_rechazado[nan] PASSED [ 23%]
+tests/unit/test_robustez.py::test_peso_no_numerico_es_rechazado[infinito] PASSED [ 23%]
+tests/unit/test_robustez.py::test_peso_no_numerico_es_rechazado[lista] PASSED [ 23%]
+tests/unit/test_robustez.py::test_monto_nulo_es_rechazado PASSED         [ 24%]
+tests/unit/test_robustez.py::test_errores_de_negocio_tienen_codigo_y_mensaje PASSED [ 24%]
+tests/unit/test_robustez.py::test_tipos_desconocidos_son_rechazados[cliente-desconocido] PASSED [ 24%]
+tests/unit/test_robustez.py::test_tipos_desconocidos_son_rechazados[envio-desconocido] PASSED [ 25%]
+tests/unit/test_robustez.py::test_tipos_desconocidos_son_rechazados[cliente-en-minusculas] PASSED [ 25%]
+tests/unit/test_robustez.py::test_acepta_enums_y_numeros_nativos PASSED  [ 25%]
+tests/unit/test_robustez.py::test_espacios_alrededor_del_numero_se_toleran PASSED [ 26%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-NUEVO-0.01] PASSED [ 26%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-NUEVO-4.99] PASSED [ 26%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-NUEVO-5.00] PASSED [ 27%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-NUEVO-5.01] PASSED [ 27%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-NUEVO-10] PASSED [ 27%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-NUEVO-19.99] PASSED [ 28%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-NUEVO-20] PASSED [ 28%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-FRECUENTE-0.01] PASSED [ 29%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-FRECUENTE-4.99] PASSED [ 29%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-FRECUENTE-5.00] PASSED [ 29%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-FRECUENTE-5.01] PASSED [ 30%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-FRECUENTE-10] PASSED [ 30%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-FRECUENTE-19.99] PASSED [ 30%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-FRECUENTE-20] PASSED [ 31%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-VIP-0.01] PASSED [ 31%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-VIP-4.99] PASSED [ 31%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-VIP-5.00] PASSED [ 32%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-VIP-5.01] PASSED [ 32%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-VIP-10] PASSED [ 32%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-VIP-19.99] PASSED [ 33%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-ESTANDAR-VIP-20] PASSED [ 33%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-NUEVO-0.01] PASSED [ 33%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-NUEVO-4.99] PASSED [ 34%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-NUEVO-5.00] PASSED [ 34%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-NUEVO-5.01] PASSED [ 34%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-NUEVO-10] PASSED [ 35%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-NUEVO-19.99] PASSED [ 35%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-NUEVO-20] PASSED [ 35%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-FRECUENTE-0.01] PASSED [ 36%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-FRECUENTE-4.99] PASSED [ 36%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-FRECUENTE-5.00] PASSED [ 36%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-FRECUENTE-5.01] PASSED [ 37%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-FRECUENTE-10] PASSED [ 37%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-FRECUENTE-19.99] PASSED [ 37%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-FRECUENTE-20] PASSED [ 38%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-VIP-0.01] PASSED [ 38%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-VIP-4.99] PASSED [ 38%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-VIP-5.00] PASSED [ 39%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-VIP-5.01] PASSED [ 39%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-VIP-10] PASSED [ 39%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-VIP-19.99] PASSED [ 40%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[0.01-EXPRESS-VIP-20] PASSED [ 40%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-NUEVO-0.01] PASSED [ 40%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-NUEVO-4.99] PASSED [ 41%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-NUEVO-5.00] PASSED [ 41%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-NUEVO-5.01] PASSED [ 41%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-NUEVO-10] PASSED [ 42%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-NUEVO-19.99] PASSED [ 42%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-NUEVO-20] PASSED [ 43%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-FRECUENTE-0.01] PASSED [ 43%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-FRECUENTE-4.99] PASSED [ 43%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-FRECUENTE-5.00] PASSED [ 44%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-FRECUENTE-5.01] PASSED [ 44%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-FRECUENTE-10] PASSED [ 44%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-FRECUENTE-19.99] PASSED [ 45%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-FRECUENTE-20] PASSED [ 45%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-VIP-0.01] PASSED [ 45%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-VIP-4.99] PASSED [ 46%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-VIP-5.00] PASSED [ 46%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-VIP-5.01] PASSED [ 46%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-VIP-10] PASSED [ 47%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-VIP-19.99] PASSED [ 47%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-ESTANDAR-VIP-20] PASSED [ 47%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-NUEVO-0.01] PASSED [ 48%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-NUEVO-4.99] PASSED [ 48%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-NUEVO-5.00] PASSED [ 48%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-NUEVO-5.01] PASSED [ 49%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-NUEVO-10] PASSED [ 49%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-NUEVO-19.99] PASSED [ 49%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-NUEVO-20] PASSED [ 50%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-FRECUENTE-0.01] PASSED [ 50%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-FRECUENTE-4.99] PASSED [ 50%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-FRECUENTE-5.00] PASSED [ 51%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-FRECUENTE-5.01] PASSED [ 51%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-FRECUENTE-10] PASSED [ 51%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-FRECUENTE-19.99] PASSED [ 52%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-FRECUENTE-20] PASSED [ 52%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-VIP-0.01] PASSED [ 52%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-VIP-4.99] PASSED [ 53%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-VIP-5.00] PASSED [ 53%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-VIP-5.01] PASSED [ 53%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-VIP-10] PASSED [ 54%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-VIP-19.99] PASSED [ 54%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.00-EXPRESS-VIP-20] PASSED [ 54%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-NUEVO-0.01] PASSED [ 55%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-NUEVO-4.99] PASSED [ 55%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-NUEVO-5.00] PASSED [ 55%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-NUEVO-5.01] PASSED [ 56%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-NUEVO-10] PASSED [ 56%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-NUEVO-19.99] PASSED [ 56%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-NUEVO-20] PASSED [ 57%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-FRECUENTE-0.01] PASSED [ 57%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-FRECUENTE-4.99] PASSED [ 58%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-FRECUENTE-5.00] PASSED [ 58%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-FRECUENTE-5.01] PASSED [ 58%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-FRECUENTE-10] PASSED [ 59%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-FRECUENTE-19.99] PASSED [ 59%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-FRECUENTE-20] PASSED [ 59%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-VIP-0.01] PASSED [ 60%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-VIP-4.99] PASSED [ 60%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-VIP-5.00] PASSED [ 60%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-VIP-5.01] PASSED [ 61%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-VIP-10] PASSED [ 61%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-VIP-19.99] PASSED [ 61%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-ESTANDAR-VIP-20] PASSED [ 62%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-NUEVO-0.01] PASSED [ 62%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-NUEVO-4.99] PASSED [ 62%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-NUEVO-5.00] PASSED [ 63%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-NUEVO-5.01] PASSED [ 63%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-NUEVO-10] PASSED [ 63%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-NUEVO-19.99] PASSED [ 64%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-NUEVO-20] PASSED [ 64%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-FRECUENTE-0.01] PASSED [ 64%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-FRECUENTE-4.99] PASSED [ 65%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-FRECUENTE-5.00] PASSED [ 65%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-FRECUENTE-5.01] PASSED [ 65%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-FRECUENTE-10] PASSED [ 66%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-FRECUENTE-19.99] PASSED [ 66%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-FRECUENTE-20] PASSED [ 66%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-VIP-0.01] PASSED [ 67%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-VIP-4.99] PASSED [ 67%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-VIP-5.00] PASSED [ 67%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-VIP-5.01] PASSED [ 68%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-VIP-10] PASSED [ 68%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-VIP-19.99] PASSED [ 68%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[100.01-EXPRESS-VIP-20] PASSED [ 69%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-NUEVO-0.01] PASSED [ 69%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-NUEVO-4.99] PASSED [ 69%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-NUEVO-5.00] PASSED [ 70%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-NUEVO-5.01] PASSED [ 70%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-NUEVO-10] PASSED [ 70%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-NUEVO-19.99] PASSED [ 71%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-NUEVO-20] PASSED [ 71%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-FRECUENTE-0.01] PASSED [ 72%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-FRECUENTE-4.99] PASSED [ 72%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-FRECUENTE-5.00] PASSED [ 72%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-FRECUENTE-5.01] PASSED [ 73%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-FRECUENTE-10] PASSED [ 73%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-FRECUENTE-19.99] PASSED [ 73%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-FRECUENTE-20] PASSED [ 74%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-VIP-0.01] PASSED [ 74%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-VIP-4.99] PASSED [ 74%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-VIP-5.00] PASSED [ 75%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-VIP-5.01] PASSED [ 75%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-VIP-10] PASSED [ 75%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-VIP-19.99] PASSED [ 76%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-ESTANDAR-VIP-20] PASSED [ 76%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-NUEVO-0.01] PASSED [ 76%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-NUEVO-4.99] PASSED [ 77%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-NUEVO-5.00] PASSED [ 77%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-NUEVO-5.01] PASSED [ 77%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-NUEVO-10] PASSED [ 78%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-NUEVO-19.99] PASSED [ 78%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-NUEVO-20] PASSED [ 78%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-FRECUENTE-0.01] PASSED [ 79%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-FRECUENTE-4.99] PASSED [ 79%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-FRECUENTE-5.00] PASSED [ 79%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-FRECUENTE-5.01] PASSED [ 80%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-FRECUENTE-10] PASSED [ 80%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-FRECUENTE-19.99] PASSED [ 80%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-FRECUENTE-20] PASSED [ 81%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-VIP-0.01] PASSED [ 81%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-VIP-4.99] PASSED [ 81%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-VIP-5.00] PASSED [ 82%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-VIP-5.01] PASSED [ 82%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-VIP-10] PASSED [ 82%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-VIP-19.99] PASSED [ 83%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[777.77-EXPRESS-VIP-20] PASSED [ 83%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-NUEVO-0.01] PASSED [ 83%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-NUEVO-4.99] PASSED [ 84%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-NUEVO-5.00] PASSED [ 84%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-NUEVO-5.01] PASSED [ 84%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-NUEVO-10] PASSED [ 85%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-NUEVO-19.99] PASSED [ 85%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-NUEVO-20] PASSED [ 86%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-FRECUENTE-0.01] PASSED [ 86%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-FRECUENTE-4.99] PASSED [ 86%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-FRECUENTE-5.00] PASSED [ 87%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-FRECUENTE-5.01] PASSED [ 87%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-FRECUENTE-10] PASSED [ 87%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-FRECUENTE-19.99] PASSED [ 88%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-FRECUENTE-20] PASSED [ 88%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-VIP-0.01] PASSED [ 88%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-VIP-4.99] PASSED [ 89%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-VIP-5.00] PASSED [ 89%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-VIP-5.01] PASSED [ 89%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-VIP-10] PASSED [ 90%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-VIP-19.99] PASSED [ 90%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-ESTANDAR-VIP-20] PASSED [ 90%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-NUEVO-0.01] PASSED [ 91%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-NUEVO-4.99] PASSED [ 91%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-NUEVO-5.00] PASSED [ 91%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-NUEVO-5.01] PASSED [ 92%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-NUEVO-10] PASSED [ 92%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-NUEVO-19.99] PASSED [ 92%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-NUEVO-20] PASSED [ 93%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-FRECUENTE-0.01] PASSED [ 93%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-FRECUENTE-4.99] PASSED [ 93%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-FRECUENTE-5.00] PASSED [ 94%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-FRECUENTE-5.01] PASSED [ 94%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-FRECUENTE-10] PASSED [ 94%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-FRECUENTE-19.99] PASSED [ 95%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-FRECUENTE-20] PASSED [ 95%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-VIP-0.01] PASSED [ 95%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-VIP-4.99] PASSED [ 96%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-VIP-5.00] PASSED [ 96%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-VIP-5.01] PASSED [ 96%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-VIP-10] PASSED [ 97%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-VIP-19.99] PASSED [ 97%]
+tests/unit/test_robustez.py::test_desglose_suma_exactamente_el_total[1000-EXPRESS-VIP-20] PASSED [ 97%]
+tests/unit/test_tabla_decision.py::test_tabla_decision[R1-NUEVO-ESTANDAR] PASSED [ 98%]
+tests/unit/test_tabla_decision.py::test_tabla_decision[R2-NUEVO-EXPRESS] PASSED [ 98%]
+tests/unit/test_tabla_decision.py::test_tabla_decision[R3-FRECUENTE-ESTANDAR] PASSED [ 98%]
+tests/unit/test_tabla_decision.py::test_tabla_decision[R4-FRECUENTE-EXPRESS] PASSED [ 99%]
+tests/unit/test_tabla_decision.py::test_tabla_decision[R5-VIP-ESTANDAR] PASSED [ 99%]
+tests/unit/test_tabla_decision.py::test_tabla_decision[R6-VIP-EXPRESS] PASSED [100%]
+
+---- generated xml file: /home/claude/fastexpress/backend/reports/junit.xml ----
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.16-final-0 _______________
+
+Name                    Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------
+app/__init__.py             0      0      0      0   100%
+app/core/__init__.py        4      0      0      0   100%
+app/core/cotizador.py      75      0     26      0   100%
+app/core/errores.py        13      0      0      0   100%
+app/core/reglas.py         26      0      0      0   100%
+app/main.py                33      0      2      1    97%   75->exit
+app/schemas.py             28      0      0      0   100%
+-------------------------------------------------------------------
+TOTAL                     179      0     28      1    99%
+Coverage HTML written to dir reports/coverage-html
+Coverage XML written to file reports/coverage.xml
+Required test coverage of 85% reached. Total coverage: 99.52%
+================ 290 passed, 13 deselected, 3 xfailed in 1.07s =================
+
+==================== 4. Complejidad ciclomática ====================
+app/main.py
+    F 37:0 manejar_error_entrada - A (4)
+    F 31:0 manejar_error_negocio - A (1)
+    F 51:0 health - A (1)
+    F 61:0 cotizar - A (1)
+    F 79:4 raiz - A (1)
+app/schemas.py
+    C 10:0 CotizacionRequest - A (1)
+    C 36:0 CotizacionResponse - A (1)
+    C 56:0 ErrorResponse - A (1)
+app/core/reglas.py
+    C 11:0 TipoCliente - A (1)
+    C 17:0 TipoEnvio - A (1)
+app/core/errores.py
+    C 7:0 CotizacionError - A (2)
+    M 12:4 CotizacionError.__init__ - A (1)
+    C 17:0 PesoInvalidoError - A (1)
+    C 21:0 LimitePesoExcedidoError - A (1)
+    C 27:0 MontoInvalidoError - A (1)
+    C 31:0 LimiteMontoExcedidoError - A (1)
+app/core/cotizador.py
+    F 75:0 validar_cotizacion - B (7)
+    F 104:0 calcular_tarifa - B (6)
+    F 58:0 _a_decimal - A (4)
+    F 54:0 _redondear - A (1)
+    F 71:0 _tiene_mas_de_dos_decimales - A (1)
+    C 37:0 Cotizacion - A (1)
+
+22 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.8181818181818181)
+
+==================== 5. Pruebas E2E de la interfaz ====================
+============================= test session starts ==============================
+platform linux -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- /home/claude/fastexpress/backend/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/fastexpress/backend
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.15.1, cov-7.1.0
+collecting ... collected 306 items / 293 deselected / 13 selected
+
+tests/e2e/test_interfaz.py::test_UI01_peso_vacio PASSED                  [  7%]
+tests/e2e/test_interfaz.py::test_UI02_peso_no_numerico PASSED            [ 15%]
+tests/e2e/test_interfaz.py::test_UI03_peso_con_tres_decimales PASSED     [ 23%]
+tests/e2e/test_interfaz.py::test_UI04_coma_decimal_aceptada PASSED       [ 30%]
+tests/e2e/test_interfaz.py::test_UI05_rechazo_por_peso PASSED            [ 38%]
+tests/e2e/test_interfaz.py::test_UI06_cotizacion_completa PASSED         [ 46%]
+tests/e2e/test_interfaz.py::test_UI07_regresion_DEF002_guia_se_retira PASSED [ 53%]
+tests/e2e/test_interfaz.py::test_UI08_movil_sin_desplazamiento_horizontal PASSED [ 61%]
+tests/e2e/test_interfaz.py::test_UI09_rechazo_por_monto PASSED           [ 69%]
+tests/e2e/test_interfaz.py::test_DEF005_error_del_servidor_no_se_presenta_como_falta_de_conexion XFAIL [ 76%]
+tests/e2e/test_interfaz.py::test_DEF006_separador_de_miles_tiene_mensaje_claro[1,000] XFAIL [ 84%]
+tests/e2e/test_interfaz.py::test_DEF006_separador_de_miles_tiene_mensaje_claro[1.500] XFAIL [ 92%]
+tests/e2e/test_interfaz.py::test_DEF006_separador_de_miles_tiene_mensaje_claro[12,000] XFAIL [100%]
+
+-- generated xml file: /home/claude/fastexpress/backend/reports/junit-e2e.xml --
+================= 9 passed, 293 deselected, 4 xfailed in 7.94s =================
+
+==================== 6. Robustez y tiempo de respuesta ====================
+Peticiones enviadas: 1000
+Respuestas por código HTTP: {200: 455, 422: 545}
+Errores 500: 0
+Tiempo medio: 1.45 ms
+Percentil 95: 2.08 ms
+Máximo: 12.74 ms
+
+==================== Resumen ====================
+Reporte de cobertura: backend/reports/coverage-html/index.html
+Resultados por caso:  backend/reports/junit.xml y junit-e2e.xml
+Esta salida completa: backend/reports/ejecucion-20261013-1822.txt
+Todo terminó sin fallos (los xfailed son defectos abiertos documentados).

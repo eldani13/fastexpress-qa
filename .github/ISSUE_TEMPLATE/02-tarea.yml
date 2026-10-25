@@ -1,0 +1,40 @@
+name: Tarea
+description: Trabajo planificado para un rol (desarrollo, pruebas o documentación)
+title: "[TAREA] "
+labels: ["tipo:tarea"]
+body:
+  - type: dropdown
+    id: rol
+    attributes:
+      label: Rol responsable
+      options:
+        - Desarrollador Backend
+        - Desarrollador Frontend
+        - Analista de Calidad (QA)
+    validations:
+      required: true
+
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: Descripción
+      description: Qué hay que hacer y por qué
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Criterios de aceptación
+      description: Condiciones verificables para dar la tarea por terminada
+      value: |
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: input
+    id: regla
+    attributes:
+      label: Regla o requisito relacionado
+      placeholder: "BR-02, BR-05, UI-07..."
