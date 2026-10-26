@@ -15,9 +15,9 @@ Se definió como el **valor declarado** del contenido.
 
 ## 3.2 Fórmula de cálculo
 
-\[
-\text{Total} = (5 + P \cdot T_{kg}) \cdot (1 - d) \cdot (1 + r) + S
-\]
+$$
+\mathrm{Total} = (5 + P \cdot T_{kg}) \cdot (1 - d) \cdot (1 + r) + S
+$$
 
 En la implementación se calcula por componentes con `Decimal` y redondeo `ROUND_HALF_UP`
 al centavo, de modo que el desglose suma exactamente el total:
@@ -25,9 +25,9 @@ al centavo, de modo que el desglose suma exactamente el total:
 1. `cargo_peso = redondear(P × T_kg)`
 2. `subtotal = 5 + cargo_peso`
 3. `descuento = redondear(subtotal × d)`
-4. `recargo = redondear((subtotal ? descuento) × r)`
+4. `recargo = redondear((subtotal − descuento) × r)`
 5. `seguro = redondear(monto × 0.02)` si aplica
-6. `total = subtotal ? descuento + recargo + seguro`
+6. `total = subtotal − descuento + recargo + seguro`
 
 ## 3.3 Ambigüedades y decisiones
 
@@ -36,4 +36,4 @@ al centavo, de modo que el desglose suma exactamente el total:
 | Campo Monto no definido | Valor declarado + BR-05 | Sin regla propia de entrada |
 | Orden descuento/recargo | Recargo sobre subtotal ya descontado | 10 kg VIP EXPRESS: $45.00 vs $47.25 |
 | Cobro del peso | Todo el peso a la tarifa de su rango | Escalonado cambiaría totales |
-| Rangos con 2 decimales | 5.005 kg no pertenece a ningún tramo ? rechazo | — |
+| Rangos con 2 decimales | 5.005 kg no pertenece a ningún tramo → rechazo | — |

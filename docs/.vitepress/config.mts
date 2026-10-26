@@ -8,6 +8,9 @@ export default withMermaid(
     lang: "es-CO",
     cleanUrls: true,
     ignoreDeadLinks: true,
+    markdown: {
+      math: true,
+    },
     themeConfig: {
       nav: [
         { text: "Inicio", link: "/" },
