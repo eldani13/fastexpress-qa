@@ -2,7 +2,7 @@
 
 **Asignatura:** Calidad de Software  
 **Sistema:** Módulo de Cotización de Envíos y Descuentos "FastExpress"  
-**Equipo:** Backend (Julián Robles), Frontend (Kenneth Rojas / Cybort8), QA (Luis Daniel Cantillo Ospino)  
+**Equipo:** Backend (Julián Robles), Frontend (Kenneth Rojas), QA (Luis Daniel Cantillo Ospino)  
 **Entrega:** martes 27 de octubre de 2026, 8:15 p.m.
 
 ::: tip Cómo leerlo
