@@ -1,6 +1,6 @@
-# Informe tÃ©cnico de Calidad de Software â€” FastExpress
+# Informe técnico de Calidad de Software — FastExpress
 
-> Documento unificado para entrega. Fuentes: archivos `01`â€¦`10` de esta carpeta.
+> Documento unificado para entrega.
 
 ---
 
@@ -20,10 +20,11 @@
 | Rol | Integrante | Responsabilidad principal | Adicionales |
 |---|---|---|---|
 | Desarrollador Backend | Julián Robles (`JuliannnR`) | Reglas de negocio, algoritmo y API REST | Repositorio API, CI, métricas de fiabilidad/eficiencia/mantenibilidad |
-| Desarrollador Frontend | Cybort8 | Interfaz, conexión con la API, validaciones de UI | Usabilidad, rediseño y alertas |
+| Desarrollador Frontend | Kenneth Rojas (`Cybort8`) | Interfaz, conexión con la API, validaciones de UI | Usabilidad, rediseño y alertas |
 | Analista de Calidad (QA) | Luis Daniel Cantillo Ospino (`eldani13`) | Caja negra, caja blanca, automatización y cobertura | Gestión de defectos, trazabilidad, consolidación de métricas e informe |
 
 Todos los integrantes participan en la redacción y revisión de este informe.
+
 
 ---
 
@@ -45,6 +46,7 @@ negra, caja blanca, cobertura y evaluación del producto.
 - Integración continua en el repositorio de la API y proceso con issues, ramas y pull requests.
 
 **Fuera de alcance.** Persistencia de cotizaciones, autenticación, pagos y rastreo de envíos.
+
 
 ---
 
@@ -88,6 +90,7 @@ al centavo, de modo que el desglose suma exactamente el total:
 | Cobro del peso | Todo el peso a la tarifa de su rango | Escalonado cambiaría totales |
 | Rangos con 2 decimales | 5.005 kg no pertenece a ningún tramo ? rechazo | — |
 
+
 ---
 
 # 4. Arquitectura, herramientas y estrategia de pruebas
@@ -116,6 +119,7 @@ La lógica de negocio vive en un módulo independiente de la API y de la interfa
 | Sistema | E2E Playwright | Interfaz | 9 + 4 xfail DEF-005/006 |
 
 La matriz de caja negra se escribió **antes** del código, según la hoja de ruta del proyecto.
+
 
 ---
 
@@ -228,6 +232,7 @@ El frontend valida formato; casos E2E en `tests/e2e/test_interfaz.py`.
 | UI-07 | Error de formato tras cotización válida | La guía anterior se retira | Aprobado (tras DEF-002) |
 | UI-08 | Vista 390 px | Sin desplazamiento horizontal | Aprobado |
 | UI-09 | Monto $1,500 | Sello "Rechazado", mención $1,000 | Aprobado |
+
 
 ---
 
@@ -390,6 +395,7 @@ flowchart TD
 Promedio del backend en ciclo 1: **1.82**. Ninguna función supera 7.
 Tras DEF-004 (ciclo 2), `_tiene_mas_de_dos_decimales` pasó de V(G) 1 a 2; el máximo sigue en **7**.
 
+
 ---
 
 # 7. Resultados de ejecución y reporte de cobertura
@@ -459,6 +465,7 @@ que servían el frontend estático en la API ya no se ejecutan. La lógica de ne
 - DEF-004 (ciclo 2): peso de 29 nueves ? **422** `LIMITE_PESO_EXCEDIDO` (antes 500).
   Evidencias: `docs/qa/evidencias/DEF-004-*.png`.
 
+
 ---
 
 # 8. Gestión de defectos
@@ -490,6 +497,7 @@ está en `docs/proceso/ciclo-de-vida-defectos.md`. Los reportes detallados viven
 
 Pendientes de cierre formal en Frontend. Las pruebas E2E de reproducción permanecen
 como regresión cuando se quiten los `xfail` en el mismo PR de corrección.
+
 
 ---
 
@@ -536,6 +544,7 @@ Tabla viva del equipo: `docs/calidad/metricas.md`.
 | Robustez / tiempo | `python scripts/medir_robustez.py` (API encendida) |
 | Extremos | Casos DEF-004 + sesión exploratoria |
 
+
 ---
 
 # 10. Conclusiones y recomendaciones
@@ -571,5 +580,6 @@ Tabla viva del equipo: `docs/calidad/metricas.md`.
 | Tabla de decisión Cliente × Envío | Cubierto — §5.5 |
 | CFG + V(G) + caminos | Cubierto — §6 |
 | Cobertura ? 85 % con análisis | Cubierto — §7 |
+
 
 ---
