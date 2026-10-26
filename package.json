@@ -1,0 +1,16 @@
+{
+  "name": "fastexpress-qa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio de documentación e informe técnico de Calidad — FastExpress",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "mermaid": "^11.6.0",
+    "vitepress": "^1.6.3",
+    "vitepress-plugin-mermaid": "^2.0.17"
+  }
+}

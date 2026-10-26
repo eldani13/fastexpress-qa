@@ -1,8 +1,22 @@
 # FastExpress QA
 
-Repositorio del Analista de Calidad (Luis Daniel Cantillo Ospino): plan de pruebas,
-defectos, reportes, métricas ISO 9126, trazabilidad e **informe técnico** exigido por el
-Proyecto Integrador.
+Sitio de documentación e **informe técnico de Calidad de Software** del cotizador FastExpress.
+
+## Ejecutar (leer el informe en el navegador)
+
+```bash
+cd fastexpress-qa
+npm install
+npm run dev
+```
+
+Abre **http://localhost:5173**
+
+| Comando | Qué hace |
+|---|---|
+| `npm run dev` | Sitio en vivo con recarga |
+| `npm run build` | Genera sitio estático en `docs/.vitepress/dist` |
+| `npm run preview` | Sirve el build de producción |
 
 ## Repos del proyecto
 
@@ -12,32 +26,16 @@ Proyecto Integrador.
 | Frontend | https://github.com/eldani13/fastexpress-frontend |
 | QA | https://github.com/eldani13/fastexpress-qa |
 
-## Informe técnico (entregable del profesor)
+## Contenido del sitio
 
-Carpeta **[`docs/informe/`](docs/informe/README.md)** — proyecto de documentación completo:
+- **Informe** (`docs/informe/`) — caja negra, caja blanca (CFG Mermaid), cobertura, defectos, métricas
+- **QA** (`docs/qa/`) — plan, casos, reportes, bitácora
+- **Calidad** (`docs/calidad/`) — métricas ISO 9126, trazabilidad
 
-| Requisito | Archivo |
+## Cumplimiento del enunciado
+
+| Requisito | Ruta en el sitio |
 |---|---|
-| Caja negra (EP, BVA, tabla de decisión) | [`05-caja-negra.md`](docs/informe/05-caja-negra.md) |
-| Caja blanca (CFG, V(G), caminos) | [`06-caja-blanca.md`](docs/informe/06-caja-blanca.md) |
-| Cobertura ≥ 85 % + análisis | [`07-cobertura-resultados.md`](docs/informe/07-cobertura-resultados.md) |
-| **Documento unificado** | [`INFORME-TECNICO.md`](docs/informe/INFORME-TECNICO.md) |
-
-## Contenido del repo
-
-- `docs/informe/` — informe técnico (caja negra, blanca, cobertura, defectos, métricas)
-- `docs/qa/` — plan IEEE 829, casos, defectos DEF-001…006, sesiones, reportes, bitácora
-- `docs/calidad/` — plan de calidad, métricas, trazabilidad
-- `docs/proceso/` — ciclo de vida de defectos y actas
-- `.github/ISSUE_TEMPLATE/` — plantilla de reporte de defecto
-
-## Cómo exportar a PDF
-
-1. Abrir `docs/informe/INFORME-TECNICO.md` en VS Code / Typora / Pandoc.
-2. Ejemplo con Pandoc:
-
-```bash
-pandoc docs/informe/INFORME-TECNICO.md -o Informe-Calidad-Software-FastExpress.pdf --toc
-```
-
-Los diagramas CFG están en Mermaid (GitHub los renderiza en la web; Pandoc puede requerir filtro mermaid).
+| EP + BVA + tabla de decisión | `/informe/05-caja-negra` |
+| CFG + V(G) + caminos | `/informe/06-caja-blanca` |
+| Cobertura ≥ 85 % | `/informe/07-cobertura-resultados` |

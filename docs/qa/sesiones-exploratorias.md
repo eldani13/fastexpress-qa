@@ -3,7 +3,7 @@
 Responsable: Analista de Calidad (QA)
 
 Cada sesión tiene un objetivo (charter), una duración fija y un registro de hallazgos.
-Formato: *Explorar <qué> con <recursos> para descubrir <tipo de problema>.*
+Formato: *Explorar \<qué\> con \<recursos\> para descubrir \<tipo de problema\>.*
 
 ## Sesión 1: valores extremos y formatos reales
 
