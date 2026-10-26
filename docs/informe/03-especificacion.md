@@ -15,9 +15,11 @@ Se definió como el **valor declarado** del contenido.
 
 ## 3.2 Fórmula de cálculo
 
-$$
-\mathrm{Total} = (5 + P \cdot T_{kg}) \cdot (1 - d) \cdot (1 + r) + S
-$$
+```
+Total = (5 + P · T_kg) · (1 − d) · (1 + r) + S
+```
+
+Donde `P` = peso, `T_kg` = tarifa por kg, `d` = descuento, `r` = recargo, `S` = seguro.
 
 En la implementación se calcula por componentes con `Decimal` y redondeo `ROUND_HALF_UP`
 al centavo, de modo que el desglose suma exactamente el total:
