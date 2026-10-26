@@ -1,6 +1,6 @@
-# Informe t√©cnico de Calidad de Software ‚Äî FastExpress
+# Informe t√É¬©cnico de Calidad de Software √¢‚Ç¨‚Äù FastExpress
 
-> Documento unificado para entrega. Fuentes: archivos `01`‚Ä¶`10` de esta carpeta.
+> Documento unificado para entrega. Fuentes: archivos `01`√¢‚Ç¨¬¶`10` de esta carpeta.
 
 ---
 
@@ -9,9 +9,9 @@
 | Campo | Detalle |
 |---|---|
 | Asignatura | Calidad de Software |
-| InstituciÛn | CorporaciÛn Universitaria PolitÈcnico de la Costa Atl·ntica |
+| Instituci√≥n | Corporaci√≥n Universitaria Polit√©cnico de la Costa Atl√°ntica |
 | Proyecto | Proyecto Integrador: Sistema de Calidad y Pruebas de Software |
-| Sistema | MÛdulo de CotizaciÛn de EnvÌos y Descuentos "FastExpress" |
+| Sistema | M√≥dulo de Cotizaci√≥n de Env√≠os y Descuentos "FastExpress" |
 | Entrega | 27 de octubre de 2026, 8:15 p.m. |
 | Modalidad | Equipo de 3 integrantes |
 
@@ -19,85 +19,85 @@
 
 | Rol | Integrante | Responsabilidad principal | Adicionales |
 |---|---|---|---|
-| Desarrollador Backend | Juli·n Robles (`JuliannnR`) | Reglas de negocio, algoritmo y API REST | Repositorio API, CI, mÈtricas de fiabilidad/eficiencia/mantenibilidad |
-| Desarrollador Frontend | Cybort8 | Interfaz, conexiÛn con la API, validaciones de UI | Usabilidad, rediseÒo y alertas |
-| Analista de Calidad (QA) | Luis Daniel Cantillo Ospino (`eldani13`) | Caja negra, caja blanca, automatizaciÛn y cobertura | GestiÛn de defectos, trazabilidad, consolidaciÛn de mÈtricas e informe |
+| Desarrollador Backend | Juli√°n Robles (`JuliannnR`) | Reglas de negocio, algoritmo y API REST | Repositorio API, CI, m√©tricas de fiabilidad/eficiencia/mantenibilidad |
+| Desarrollador Frontend | Cybort8 | Interfaz, conexi√≥n con la API, validaciones de UI | Usabilidad, redise√±o y alertas |
+| Analista de Calidad (QA) | Luis Daniel Cantillo Ospino (`eldani13`) | Caja negra, caja blanca, automatizaci√≥n y cobertura | Gesti√≥n de defectos, trazabilidad, consolidaci√≥n de m√©tricas e informe |
 
-Todos los integrantes participan en la redacciÛn y revisiÛn de este informe.
+Todos los integrantes participan en la redacci√≥n y revisi√≥n de este informe.
 
 ---
 
-# 2. IntroducciÛn y alcance
+# 2. Introducci√≥n y alcance
 
-FastExpress cotiza el valor de un envÌo a partir del peso, el valor declarado, el tipo de
-cliente y el tipo de envÌo. El sistema se validÛ con una suite automatizada de caja negra,
-caja blanca, API y E2E, midiendo cobertura de lÌneas y ramas por encima del 85 % exigido.
+FastExpress cotiza el valor de un env√≠o a partir del peso, el valor declarado, el tipo de
+cliente y el tipo de env√≠o. El sistema se valid√≥ con una suite automatizada de caja negra,
+caja blanca, API y E2E, midiendo cobertura de l√≠neas y ramas por encima del 85 % exigido.
 
-**Objetivo.** Construir el mÛdulo de cotizaciÛn y demostrar su calidad con pruebas de caja
-negra, caja blanca, cobertura y evaluaciÛn del producto.
+**Objetivo.** Construir el m√≥dulo de cotizaci√≥n y demostrar su calidad con pruebas de caja
+negra, caja blanca, cobertura y evaluaci√≥n del producto.
 
 ## Alcance
 
-- Algoritmo de c·lculo con las reglas BR-01 a BR-04 del enunciado y BR-05 propuesta por el equipo.
-- API REST que expone la cotizaciÛn y responde errores con cÛdigos de negocio.
+- Algoritmo de c√°lculo con las reglas BR-01 a BR-04 del enunciado y BR-05 propuesta por el equipo.
+- API REST que expone la cotizaci√≥n y responde errores con c√≥digos de negocio.
 - Interfaz web (Next.js) con formulario y desglose del valor.
 - Suite de pruebas automatizadas (PyTest) con reporte de cobertura.
-- IntegraciÛn continua en el repositorio de la API y proceso con issues, ramas y pull requests.
+- Integraci√≥n continua en el repositorio de la API y proceso con issues, ramas y pull requests.
 
-**Fuera de alcance.** Persistencia de cotizaciones, autenticaciÛn, pagos y rastreo de envÌos.
+**Fuera de alcance.** Persistencia de cotizaciones, autenticaci√≥n, pagos y rastreo de env√≠os.
 
 ---
 
-# 3. EspecificaciÛn y supuestos
+# 3. Especificaci√≥n y supuestos
 
 ## 3.1 Reglas de negocio
 
-| Regla | DescripciÛn | Origen |
+| Regla | Descripci√≥n | Origen |
 |---|---|---|
 | BR-01 | Tarifa base $5.00 USD por orden | Enunciado |
-| BR-02 | 0.01ñ5.00 kg: $2.00/kg; 5.01ñ20.00 kg: $4.00/kg; > 20.00 kg: rechazo | Enunciado |
+| BR-02 | 0.01‚Äì5.00 kg: $2.00/kg; 5.01‚Äì20.00 kg: $4.00/kg; > 20.00 kg: rechazo | Enunciado |
 | BR-03 | NUEVO 0 %; FRECUENTE 10 %; VIP 20 % | Enunciado |
 | BR-04 | ESTANDAR 0 %; EXPRESS +25 % sobre el subtotal con descuento | Enunciado |
-| BR-05 | Monto declarado 0.01ñ100.00: sin seguro; 100.01ñ1,000.00: seguro 2 %; > 1,000.00: rechazo | Propuesta del equipo |
+| BR-05 | Monto declarado 0.01‚Äì100.00: sin seguro; 100.01‚Äì1,000.00: seguro 2 %; > 1,000.00: rechazo | Propuesta del equipo |
 
-Sobre *Monto*, el docente indicÛ que no estaba estipulado y que el equipo podÌa proponerlo.
-Se definiÛ como el **valor declarado** del contenido.
+Sobre *Monto*, el docente indic√≥ que no estaba estipulado y que el equipo pod√≠a proponerlo.
+Se defini√≥ como el **valor declarado** del contenido.
 
-## 3.2 FÛrmula de c·lculo
+## 3.2 F√≥rmula de c√°lculo
 
 \[
 \text{Total} = (5 + P \cdot T_{kg}) \cdot (1 - d) \cdot (1 + r) + S
 \]
 
-En la implementaciÛn se calcula por componentes con `Decimal` y redondeo `ROUND_HALF_UP`
+En la implementaci√≥n se calcula por componentes con `Decimal` y redondeo `ROUND_HALF_UP`
 al centavo, de modo que el desglose suma exactamente el total:
 
-1. `cargo_peso = redondear(P ◊ T_kg)`
+1. `cargo_peso = redondear(P √ó T_kg)`
 2. `subtotal = 5 + cargo_peso`
-3. `descuento = redondear(subtotal ◊ d)`
-4. `recargo = redondear((subtotal ? descuento) ◊ r)`
-5. `seguro = redondear(monto ◊ 0.02)` si aplica
+3. `descuento = redondear(subtotal √ó d)`
+4. `recargo = redondear((subtotal ? descuento) √ó r)`
+5. `seguro = redondear(monto √ó 0.02)` si aplica
 6. `total = subtotal ? descuento + recargo + seguro`
 
-## 3.3 Ambig¸edades y decisiones
+## 3.3 Ambig√ºedades y decisiones
 
-| Ambig¸edad | DecisiÛn del equipo | Efecto si se hubiera elegido otra |
+| Ambig√ºedad | Decisi√≥n del equipo | Efecto si se hubiera elegido otra |
 |---|---|---|
 | Campo Monto no definido | Valor declarado + BR-05 | Sin regla propia de entrada |
 | Orden descuento/recargo | Recargo sobre subtotal ya descontado | 10 kg VIP EXPRESS: $45.00 vs $47.25 |
-| Cobro del peso | Todo el peso a la tarifa de su rango | Escalonado cambiarÌa totales |
-| Rangos con 2 decimales | 5.005 kg no pertenece a ning˙n tramo ? rechazo | ó |
+| Cobro del peso | Todo el peso a la tarifa de su rango | Escalonado cambiar√≠a totales |
+| Rangos con 2 decimales | 5.005 kg no pertenece a ning√∫n tramo ? rechazo | ‚Äî |
 
 ---
 
 # 4. Arquitectura, herramientas y estrategia de pruebas
 
-La lÛgica de negocio vive en un mÛdulo independiente de la API y de la interfaz
+La l√≥gica de negocio vive en un m√≥dulo independiente de la API y de la interfaz
 (`fastexpress-api/app/core/`), lo que permite probarla sin levantar el servidor.
 
 ## 4.1 Componentes
 
-| Componente | TecnologÌa | UbicaciÛn |
+| Componente | Tecnolog√≠a | Ubicaci√≥n |
 |---|---|---|
 | Core de negocio | Python 3.12+, `decimal.Decimal` | `app/core/` (`reglas.py`, `errores.py`, `cotizador.py`) |
 | API REST | FastAPI | `app/main.py`, `app/schemas.py` |
@@ -107,59 +107,59 @@ La lÛgica de negocio vive en un mÛdulo independiente de la API y de la interfaz
 
 ## 4.2 Estrategia de pruebas
 
-| Nivel | TÈcnica | Objeto | Casos (ciclo 1) |
+| Nivel | T√©cnica | Objeto | Casos (ciclo 1) |
 |---|---|---|---|
-| Unidad / integraciÛn lÛgica | Caja negra (EP, BVA, decisiÛn) | Peso, monto, cliente◊envÌo | 38 |
+| Unidad / integraci√≥n l√≥gica | Caja negra (EP, BVA, decisi√≥n) | Peso, monto, cliente√óenv√≠o | 38 |
 | Unidad | Caja blanca (caminos) | `calcular_tarifa`, `validar_cotizacion` | 13 |
-| Unidad | Robustez | Entradas atÌpicas y propiedad del desglose | 223 |
+| Unidad | Robustez | Entradas at√≠picas y propiedad del desglose | 223 |
 | API | Contrato HTTP | `POST /api/v1/cotizaciones` | 16 + 3 xfail DEF-004 |
 | Sistema | E2E Playwright | Interfaz | 9 + 4 xfail DEF-005/006 |
 
-La matriz de caja negra se escribiÛ **antes** del cÛdigo, seg˙n la hoja de ruta del proyecto.
+La matriz de caja negra se escribi√≥ **antes** del c√≥digo, seg√∫n la hoja de ruta del proyecto.
 
 ---
 
 # 5. Plan de pruebas de caja negra
 
 **Requisito del enunciado:** particiones de equivalencia y BVA para `Peso` y `Monto`, y
-tabla de decisiÛn `Tipo de Cliente` ◊ `Tipo de EnvÌo`.
+tabla de decisi√≥n `Tipo de Cliente` √ó `Tipo de Env√≠o`.
 
-Los 38 casos de caja negra se diseÒaron desde la especificaciÛn (sin mirar el cÛdigo) y los
+Los 38 casos de caja negra se dise√±aron desde la especificaci√≥n (sin mirar el c√≥digo) y los
 38 se aprobaron en el ciclo 1. Cada identificador coincide con el nombre del caso en PyTest
 (`pytest -k CE2`, `pytest -k BVA-05`, etc.).
 
 Valores neutros al aislar un campo:
 
-- Al probar **peso**: cliente `NUEVO`, envÌo `ESTANDAR`, monto `$50.00`.
+- Al probar **peso**: cliente `NUEVO`, env√≠o `ESTANDAR`, monto `$50.00`.
 - Al probar **monto**: peso `1 kg`, `NUEVO`, `ESTANDAR` (subtotal `$7.00`).
 
 ## 5.1 Particiones de equivalencia: Peso (BR-02)
 
 | ID | Clase | Tipo | Entrada | Resultado esperado | Estado |
 |---|---|---|---|---|---|
-| CE1 | Peso ? 0 | Inv·lida | ?1 | Error `PESO_INVALIDO` | Aprobado |
-| CE2 | 0.01 ñ 5.00 kg | V·lida | 3 | Total $11.00 ($2/kg) | Aprobado |
-| CE3 | 5.01 ñ 20.00 kg | V·lida | 12 | Total $53.00 ($4/kg) | Aprobado |
-| CE4 | Mayor a 20.00 kg | Inv·lida | 25 | Rechazo `LIMITE_PESO_EXCEDIDO` | Aprobado |
-| CE5 | No numÈrico | Inv·lida | `"abc"` | Error `PESO_INVALIDO` | Aprobado |
-| CE6 | M·s de 2 decimales | Inv·lida | 5.005 | Error `PESO_INVALIDO` | Aprobado |
+| CE1 | Peso ? 0 | Inv√°lida | ?1 | Error `PESO_INVALIDO` | Aprobado |
+| CE2 | 0.01 ‚Äì 5.00 kg | V√°lida | 3 | Total $11.00 ($2/kg) | Aprobado |
+| CE3 | 5.01 ‚Äì 20.00 kg | V√°lida | 12 | Total $53.00 ($4/kg) | Aprobado |
+| CE4 | Mayor a 20.00 kg | Inv√°lida | 25 | Rechazo `LIMITE_PESO_EXCEDIDO` | Aprobado |
+| CE5 | No num√©rico | Inv√°lida | `"abc"` | Error `PESO_INVALIDO` | Aprobado |
+| CE6 | M√°s de 2 decimales | Inv√°lida | 5.005 | Error `PESO_INVALIDO` | Aprobado |
 
 **Archivo:** `tests/unit/test_caja_negra_peso.py`
 
-## 5.2 Valores lÌmite: Peso (BR-02)
+## 5.2 Valores l√≠mite: Peso (BR-02)
 
-| ID | LÌmite analizado | Entrada (kg) | Tarifa | Resultado esperado | Estado |
+| ID | L√≠mite analizado | Entrada (kg) | Tarifa | Resultado esperado | Estado |
 |---|---|---|---|---|---|
-| BVA-01 | MÌnimo ? 0.01 | 0.00 | ó | Error `PESO_INVALIDO` | Aprobado |
-| BVA-02 | MÌnimo | 0.01 | $2/kg | $5.02 | Aprobado |
-| BVA-03 | MÌnimo + 0.01 | 0.02 | $2/kg | $5.04 | Aprobado |
+| BVA-01 | M√≠nimo ? 0.01 | 0.00 | ‚Äî | Error `PESO_INVALIDO` | Aprobado |
+| BVA-02 | M√≠nimo | 0.01 | $2/kg | $5.02 | Aprobado |
+| BVA-03 | M√≠nimo + 0.01 | 0.02 | $2/kg | $5.04 | Aprobado |
 | BVA-04 | Fin de tramo 1 ? 0.01 | 4.99 | $2/kg | $14.98 | Aprobado |
 | BVA-05 | Fin de tramo 1 | 5.00 | $2/kg | $15.00 | Aprobado |
 | BVA-06 | Inicio de tramo 2 | 5.01 | $4/kg | $25.04 | Aprobado |
 | BVA-07 | Inicio de tramo 2 + 0.01 | 5.02 | $4/kg | $25.08 | Aprobado |
-| BVA-08 | M·ximo ? 0.01 | 19.99 | $4/kg | $84.96 | Aprobado |
-| BVA-09 | M·ximo | 20.00 | $4/kg | $85.00 | Aprobado |
-| BVA-10 | M·ximo + 0.01 | 20.01 | ó | Rechazo `LIMITE_PESO_EXCEDIDO` | Aprobado |
+| BVA-08 | M√°ximo ? 0.01 | 19.99 | $4/kg | $84.96 | Aprobado |
+| BVA-09 | M√°ximo | 20.00 | $4/kg | $85.00 | Aprobado |
+| BVA-10 | M√°ximo + 0.01 | 20.01 | ‚Äî | Rechazo `LIMITE_PESO_EXCEDIDO` | Aprobado |
 
 Entre BVA-05 y BVA-06 el total salta de $15.00 a $25.04 por 0.01 kg: es el comportamiento
 de BR-02 (punto de mayor riesgo: usar `<` en vez de `<=`).
@@ -168,47 +168,47 @@ de BR-02 (punto de mayor riesgo: usar `<` en vez de `<=`).
 
 | ID | Clase | Tipo | Entrada | Resultado esperado | Estado |
 |---|---|---|---|---|---|
-| CE-M1 | Monto ? 0 | Inv·lida | ?10 | Error `MONTO_INVALIDO` | Aprobado |
-| CE-M2 | 0.01 ñ 100.00 | V·lida | 50 | Seguro $0.00, total $7.00 | Aprobado |
-| CE-M3 | 100.01 ñ 1,000.00 | V·lida | 500 | Seguro $10.00, total $17.00 | Aprobado |
-| CE-M4 | Mayor a 1,000.00 | Inv·lida | 1,500 | Rechazo `LIMITE_MONTO_EXCEDIDO` | Aprobado |
-| CE-M5 | No numÈrico | Inv·lida | `"abc"` | Error `MONTO_INVALIDO` | Aprobado |
-| CE-M6 | M·s de 2 decimales | Inv·lida | 50.005 | Error `MONTO_INVALIDO` | Aprobado |
+| CE-M1 | Monto ? 0 | Inv√°lida | ?10 | Error `MONTO_INVALIDO` | Aprobado |
+| CE-M2 | 0.01 ‚Äì 100.00 | V√°lida | 50 | Seguro $0.00, total $7.00 | Aprobado |
+| CE-M3 | 100.01 ‚Äì 1,000.00 | V√°lida | 500 | Seguro $10.00, total $17.00 | Aprobado |
+| CE-M4 | Mayor a 1,000.00 | Inv√°lida | 1,500 | Rechazo `LIMITE_MONTO_EXCEDIDO` | Aprobado |
+| CE-M5 | No num√©rico | Inv√°lida | `"abc"` | Error `MONTO_INVALIDO` | Aprobado |
+| CE-M6 | M√°s de 2 decimales | Inv√°lida | 50.005 | Error `MONTO_INVALIDO` | Aprobado |
 
 **Archivo:** `tests/unit/test_caja_negra_monto.py`
 
-## 5.4 Valores lÌmite: Monto declarado (BR-05)
+## 5.4 Valores l√≠mite: Monto declarado (BR-05)
 
-| ID | LÌmite analizado | Entrada ($) | Seguro | Total esperado | Estado |
+| ID | L√≠mite analizado | Entrada ($) | Seguro | Total esperado | Estado |
 |---|---|---|---|---|---|
-| BVA-M01 | MÌnimo ? 0.01 | 0.00 | ó | Error `MONTO_INVALIDO` | Aprobado |
-| BVA-M02 | MÌnimo | 0.01 | $0.00 | $7.00 | Aprobado |
-| BVA-M03 | MÌnimo + 0.01 | 0.02 | $0.00 | $7.00 | Aprobado |
+| BVA-M01 | M√≠nimo ? 0.01 | 0.00 | ‚Äî | Error `MONTO_INVALIDO` | Aprobado |
+| BVA-M02 | M√≠nimo | 0.01 | $0.00 | $7.00 | Aprobado |
+| BVA-M03 | M√≠nimo + 0.01 | 0.02 | $0.00 | $7.00 | Aprobado |
 | BVA-M04 | Umbral de seguro ? 0.01 | 99.99 | $0.00 | $7.00 | Aprobado |
 | BVA-M05 | Umbral de seguro | 100.00 | $0.00 | $7.00 | Aprobado |
 | BVA-M06 | Umbral de seguro + 0.01 | 100.01 | $2.00 | $9.00 | Aprobado |
 | BVA-M07 | Umbral de seguro + 0.02 | 100.02 | $2.00 | $9.00 | Aprobado |
-| BVA-M08 | M·ximo ? 0.01 | 999.99 | $20.00 | $27.00 | Aprobado |
-| BVA-M09 | M·ximo | 1,000.00 | $20.00 | $27.00 | Aprobado |
-| BVA-M10 | M·ximo + 0.01 | 1,000.01 | ó | Rechazo `LIMITE_MONTO_EXCEDIDO` | Aprobado |
+| BVA-M08 | M√°ximo ? 0.01 | 999.99 | $20.00 | $27.00 | Aprobado |
+| BVA-M09 | M√°ximo | 1,000.00 | $20.00 | $27.00 | Aprobado |
+| BVA-M10 | M√°ximo + 0.01 | 1,000.01 | ‚Äî | Rechazo `LIMITE_MONTO_EXCEDIDO` | Aprobado |
 
 El seguro de BVA-M06 es \(100.01 \times 0.02 = 2.0002\), redondeado a $2.00.
 
-## 5.5 Tabla de decisiÛn: Tipo de cliente ◊ Tipo de envÌo (BR-03, BR-04)
+## 5.5 Tabla de decisi√≥n: Tipo de cliente √ó Tipo de env√≠o (BR-03, BR-04)
 
 Condiciones fijas: peso **10 kg** (subtotal $45.00) y monto **$50.00** (sin seguro).
-Dos condiciones (3 ◊ 2) generan **6 reglas**.
+Dos condiciones (3 √ó 2) generan **6 reglas**.
 
-| CondiciÛn / acciÛn | R1 | R2 | R3 | R4 | R5 | R6 |
+| Condici√≥n / acci√≥n | R1 | R2 | R3 | R4 | R5 | R6 |
 |---|---|---|---|---|---|---|
 | Tipo de cliente | NUEVO | NUEVO | FRECUENTE | FRECUENTE | VIP | VIP |
-| Tipo de envÌo | ESTANDAR | EXPRESS | ESTANDAR | EXPRESS | ESTANDAR | EXPRESS |
+| Tipo de env√≠o | ESTANDAR | EXPRESS | ESTANDAR | EXPRESS | ESTANDAR | EXPRESS |
 | Descuento | 0 % ($0.00) | 0 % ($0.00) | 10 % ($4.50) | 10 % ($4.50) | 20 % ($9.00) | 20 % ($9.00) |
 | Recargo | 0 % | 25 % ($11.25) | 0 % | 25 % ($10.13) | 0 % | 25 % ($9.00) |
 | **Total esperado** | **$45.00** | **$56.25** | **$40.50** | **$50.63** | **$36.00** | **$45.00** |
 | Estado | Aprobado | Aprobado | Aprobado | Aprobado | Aprobado | Aprobado |
 
-**R4** es el caso crÌtico de redondeo: \(40.50 \times 0.25 = 10.125\). Con `Decimal` y
+**R4** es el caso cr√≠tico de redondeo: \(40.50 \times 0.25 = 10.125\). Con `Decimal` y
 `ROUND_HALF_UP` da **$10.13**; con `float`/`round()` de Python puede dar $10.12.
 
 **Archivo:** `tests/unit/test_tabla_decision.py`
@@ -219,33 +219,33 @@ El frontend valida formato; casos E2E en `tests/e2e/test_interfaz.py`.
 
 | ID | Entrada | Resultado esperado | Estado (ciclo 1) |
 |---|---|---|---|
-| UI-01 | Peso vacÌo | "Ingresa el peso."; no se llama a la API | Aprobado |
-| UI-02 | Peso `"abc"` | "Escribe solo n˙meros, por ejemplo 2.5." | Aprobado |
-| UI-03 | Peso `"2,555"` | "Usa m·ximo 2 decimales." | Aprobado |
+| UI-01 | Peso vac√≠o | "Ingresa el peso."; no se llama a la API | Aprobado |
+| UI-02 | Peso `"abc"` | "Escribe solo n√∫meros, por ejemplo 2.5." | Aprobado |
+| UI-03 | Peso `"2,555"` | "Usa m√°ximo 2 decimales." | Aprobado |
 | UI-04 | `"4,5"` kg, VIP, ESTANDAR | Total $11.20 | Aprobado |
-| UI-05 | 21 kg | GuÌa con sello "Rechazado" | Aprobado |
+| UI-05 | 21 kg | Gu√≠a con sello "Rechazado" | Aprobado |
 | UI-06 | 10 kg, $250, FRECUENTE, EXPRESS | Total $55.63, cinta Express | Aprobado |
-| UI-07 | Error de formato tras cotizaciÛn v·lida | La guÌa anterior se retira | Aprobado (tras DEF-002) |
+| UI-07 | Error de formato tras cotizaci√≥n v√°lida | La gu√≠a anterior se retira | Aprobado (tras DEF-002) |
 | UI-08 | Vista 390 px | Sin desplazamiento horizontal | Aprobado |
-| UI-09 | Monto $1,500 | Sello "Rechazado", menciÛn $1,000 | Aprobado |
+| UI-09 | Monto $1,500 | Sello "Rechazado", menci√≥n $1,000 | Aprobado |
 
 ---
 
 # 6. Plan de pruebas de caja blanca
 
-**Requisito del enunciado:** diagrama CFG del algoritmo principal, c·lculo de V(G) y
+**Requisito del enunciado:** diagrama CFG del algoritmo principal, c√°lculo de V(G) y
 cobertura de caminos independientes.
 
-El algoritmo se dividiÛ en dos funciones con V(G) = 6 y 7; sus **13 caminos independientes**
+El algoritmo se dividi√≥ en dos funciones con V(G) = 6 y 7; sus **13 caminos independientes**
 tienen cada uno una prueba automatizada y las 13 se aprobaron (ciclo 1).
-Se separÛ validaciÛn y c·lculo para que cada grafo sea legible y ninguna funciÛn supere
-el umbral de McCabe (V(G) ? 10). En el cÛdigo, las decisiones llevan comentarios `# D1`, `# D2`Ö
+Se separ√≥ validaci√≥n y c√°lculo para que cada grafo sea legible y ninguna funci√≥n supere
+el umbral de McCabe (V(G) ? 10). En el c√≥digo, las decisiones llevan comentarios `# D1`, `# D2`‚Ä¶
 
 **Archivo de pruebas:** `tests/unit/test_caja_blanca.py`
 
-## 6.1 FunciÛn principal: `calcular_tarifa`
+## 6.1 Funci√≥n principal: `calcular_tarifa`
 
-PseudocÛdigo (nodos alineados al grafo):
+Pseudoc√≥digo (nodos alineados al grafo):
 
 ```text
 1  peso, monto = validar_cotizacion(...)
@@ -266,47 +266,47 @@ PseudocÛdigo (nodos alineados al grafo):
 16 total = ...; return Cotizacion
 ```
 
-### Grafo de flujo de control (CFG) ó `calcular_tarifa`
+### Grafo de flujo de control (CFG) ‚Äî `calcular_tarifa`
 
 ```mermaid
 flowchart TD
   N1([1 Inicio / validar]) --> N2{2 D1: peso ? 5.00?}
-  N2 -->|sÌ| N3[3 tarifa tramo 1]
+  N2 -->|s√≠| N3[3 tarifa tramo 1]
   N2 -->|no| N4[4 tarifa tramo 2]
   N3 --> N5{5 D2: FRECUENTE?}
   N4 --> N5
-  N5 -->|sÌ| N6[6 desc. 10%]
+  N5 -->|s√≠| N6[6 desc. 10%]
   N5 -->|no| N7{7 D3: VIP?}
-  N7 -->|sÌ| N8[8 desc. 20%]
+  N7 -->|s√≠| N8[8 desc. 20%]
   N7 -->|no| N9[9 desc. 0%]
   N6 --> N10{10 D4: EXPRESS?}
   N8 --> N10
   N9 --> N10
-  N10 -->|sÌ| N11[11 recargo 25%]
+  N10 -->|s√≠| N11[11 recargo 25%]
   N10 -->|no| N12[12 recargo 0%]
   N11 --> N13{13 D5: monto > 100?}
   N12 --> N13
-  N13 -->|sÌ| N14[14 seguro 2%]
+  N13 -->|s√≠| N14[14 seguro 2%]
   N13 -->|no| N15[15 seguro 0]
   N14 --> N16([16 Total / fin])
   N15 --> N16
 ```
 
-### C·lculo de la complejidad ciclom·tica ó `calcular_tarifa`
+### C√°lculo de la complejidad ciclom√°tica ‚Äî `calcular_tarifa`
 
-Los tres mÈtodos dan el mismo resultado. `radon cc` confirma: `calcular_tarifa - B (6)`.
+Los tres m√©todos dan el mismo resultado. `radon cc` confirma: `calcular_tarifa - B (6)`.
 
-| MÈtodo | FÛrmula | Datos | Resultado |
+| M√©todo | F√≥rmula | Datos | Resultado |
 |---|---|---|---|
 | Aristas y nodos | V(G) = E ? N + 2 | E = 20, N = 16 | **6** |
 | Nodos predicado | V(G) = P + 1 | P = 5 (nodos 2, 5, 7, 10, 13) | **6** |
 | Regiones | V(G) = regiones | 5 cerradas + 1 exterior | **6** |
 
-### Caminos independientes ó `calcular_tarifa`
+### Caminos independientes ‚Äî `calcular_tarifa`
 
-V(G) = 6 ? se necesitan **6 caminos**. C1 es el camino base; cada camino siguiente cambia una decisiÛn.
+V(G) = 6 ? se necesitan **6 caminos**. C1 es el camino base; cada camino siguiente cambia una decisi√≥n.
 
-| Camino | Secuencia de nodos | DecisiÛn que cambia | Entrada (peso, cliente, envÌo, monto) | Total | Prueba | Estado |
+| Camino | Secuencia de nodos | Decisi√≥n que cambia | Entrada (peso, cliente, env√≠o, monto) | Total | Prueba | Estado |
 |---|---|---|---|---|---|---|
 | C1 | 1-2-3-5-7-9-10-12-13-15-16 | Base | 3, NUEVO, ESTANDAR, 50 | $11.00 | C1-base | Aprobado |
 | C2 | 1-2-4-5-7-9-10-12-13-15-16 | D1 falso (tramo 2) | 12, NUEVO, ESTANDAR, 50 | $53.00 | C2-D1-falso | Aprobado |
@@ -315,57 +315,57 @@ V(G) = 6 ? se necesitan **6 caminos**. C1 es el camino base; cada camino siguien
 | C5 | 1-2-3-5-7-9-10-11-13-15-16 | D4 verdadero (EXPRESS) | 3, NUEVO, EXPRESS, 50 | $13.75 | C5-D4-verdadero | Aprobado |
 | C6 | 1-2-3-5-7-9-10-12-13-14-16 | D5 verdadero (seguro) | 3, NUEVO, ESTANDAR, 500 | $21.00 | C6-D5-verdadero | Aprobado |
 
-## 6.2 FunciÛn de validaciÛn: `validar_cotizacion`
+## 6.2 Funci√≥n de validaci√≥n: `validar_cotizacion`
 
 ```text
 1  peso = _a_decimal(...); monto = _a_decimal(...)
-2  if m·s de 2 decimales en peso:     # D1 ? 3 error
-4  if peso < mÌnimo:                  # D2 ? 5 error
-6  if peso > m·ximo:                  # D3 ? 7 rechazo
-8  if m·s de 2 decimales en monto:    # D4 ? 9 error
-10 if monto < mÌnimo:                 # D5 ? 11 error
-12 if monto > m·ximo:                 # D6 ? 13 rechazo
+2  if m√°s de 2 decimales en peso:     # D1 ? 3 error
+4  if peso < m√≠nimo:                  # D2 ? 5 error
+6  if peso > m√°ximo:                  # D3 ? 7 rechazo
+8  if m√°s de 2 decimales en monto:    # D4 ? 9 error
+10 if monto < m√≠nimo:                 # D5 ? 11 error
+12 if monto > m√°ximo:                 # D6 ? 13 rechazo
 14 return peso, monto cuantizados
-15 fin (todas las salidas llegan aquÌ)
+15 fin (todas las salidas llegan aqu√≠)
 ```
 
-### Grafo de flujo de control (CFG) ó `validar_cotizacion`
+### Grafo de flujo de control (CFG) ‚Äî `validar_cotizacion`
 
 ```mermaid
 flowchart TD
-  N1([1 Convertir a Decimal]) --> N2{2 D1: øpeso > 2 dec?}
-  N2 -->|sÌ| N3[3 PESO_INVALIDO]
-  N2 -->|no| N4{4 D2: øpeso < mÌn?}
+  N1([1 Convertir a Decimal]) --> N2{2 D1: ¬øpeso > 2 dec?}
+  N2 -->|s√≠| N3[3 PESO_INVALIDO]
+  N2 -->|no| N4{4 D2: ¬øpeso < m√≠n?}
   N3 --> N15([15 Fin])
-  N4 -->|sÌ| N5[5 PESO_INVALIDO]
-  N4 -->|no| N6{6 D3: øpeso > m·x?}
+  N4 -->|s√≠| N5[5 PESO_INVALIDO]
+  N4 -->|no| N6{6 D3: ¬øpeso > m√°x?}
   N5 --> N15
-  N6 -->|sÌ| N7[7 LIMITE_PESO]
-  N6 -->|no| N8{8 D4: ømonto > 2 dec?}
+  N6 -->|s√≠| N7[7 LIMITE_PESO]
+  N6 -->|no| N8{8 D4: ¬ømonto > 2 dec?}
   N7 --> N15
-  N8 -->|sÌ| N9[9 MONTO_INVALIDO]
-  N8 -->|no| N10{10 D5: ømonto < mÌn?}
+  N8 -->|s√≠| N9[9 MONTO_INVALIDO]
+  N8 -->|no| N10{10 D5: ¬ømonto < m√≠n?}
   N9 --> N15
-  N10 -->|sÌ| N11[11 MONTO_INVALIDO]
-  N10 -->|no| N12{12 D6: ømonto > m·x?}
+  N10 -->|s√≠| N11[11 MONTO_INVALIDO]
+  N10 -->|no| N12{12 D6: ¬ømonto > m√°x?}
   N11 --> N15
-  N12 -->|sÌ| N13[13 LIMITE_MONTO]
+  N12 -->|s√≠| N13[13 LIMITE_MONTO]
   N12 -->|no| N14[14 return OK]
   N13 --> N15
   N14 --> N15
 ```
 
-### C·lculo de V(G) ó `validar_cotizacion`
+### C√°lculo de V(G) ‚Äî `validar_cotizacion`
 
 `radon`: `validar_cotizacion - B (7)`.
 
-| MÈtodo | FÛrmula | Datos | Resultado |
+| M√©todo | F√≥rmula | Datos | Resultado |
 |---|---|---|---|
 | Aristas y nodos | V(G) = E ? N + 2 | E = 20, N = 15 | **7** |
 | Nodos predicado | V(G) = P + 1 | P = 6 | **7** |
 | Regiones | V(G) = regiones | 6 cerradas + 1 exterior | **7** |
 
-### Caminos independientes ó `validar_cotizacion`
+### Caminos independientes ‚Äî `validar_cotizacion`
 
 | Camino | Secuencia | Entrada (peso, monto) | Resultado esperado | Prueba | Estado |
 |---|---|---|---|---|---|
@@ -377,44 +377,44 @@ flowchart TD
 | V6 | 1-2-4-6-8-10-11-15 | 3, 0 | `MONTO_INVALIDO` | V6-D5-monto-bajo-minimo | Aprobado |
 | V7 | 1-2-4-6-8-10-12-13-15 | 3, 1000.01 | `LIMITE_MONTO_EXCEDIDO` | V7-D6-monto-sobre-maximo | Aprobado |
 
-## 6.3 Complejidad del resto del cÛdigo
+## 6.3 Complejidad del resto del c√≥digo
 
-| FunciÛn | V(G) | Riesgo (McCabe) |
+| Funci√≥n | V(G) | Riesgo (McCabe) |
 |---|---|---|
-| `validar_cotizacion` | 7 | Bajo (1ñ10) |
+| `validar_cotizacion` | 7 | Bajo (1‚Äì10) |
 | `calcular_tarifa` | 6 | Bajo |
 | `_a_decimal` | 4 | Bajo |
 | `manejar_error_entrada` (API) | 4 | Bajo |
-| Resto | 1ñ2 | Bajo |
+| Resto | 1‚Äì2 | Bajo |
 
-Promedio del backend en ciclo 1: **1.82**. Ninguna funciÛn supera 7.
-Tras DEF-004 (ciclo 2), `_tiene_mas_de_dos_decimales` pasÛ de V(G) 1 a 2; el m·ximo sigue en **7**.
+Promedio del backend en ciclo 1: **1.82**. Ninguna funci√≥n supera 7.
+Tras DEF-004 (ciclo 2), `_tiene_mas_de_dos_decimales` pas√≥ de V(G) 1 a 2; el m√°ximo sigue en **7**.
 
 ---
 
-# 7. Resultados de ejecuciÛn y reporte de cobertura
+# 7. Resultados de ejecuci√≥n y reporte de cobertura
 
-**Requisito del enunciado:** captura y an·lisis de cobertura; mÌnimo **85 %** de lÌneas y ramas.
+**Requisito del enunciado:** captura y an√°lisis de cobertura; m√≠nimo **85 %** de l√≠neas y ramas.
 
-## 7.1 Resultados por tipo de prueba ó Ciclo 1 (13 oct 2026)
+## 7.1 Resultados por tipo de prueba ‚Äî Ciclo 1 (13 oct 2026)
 
-EjecuciÛn: entorno virtual nuevo, Linux, Python 3.13. Registro completo:
-`docs/qa/reportes/ejecucion-ciclo-1.txt`. An·lisis: `docs/qa/reportes/ciclo-1.md`.
+Ejecuci√≥n: entorno virtual nuevo, Linux, Python 3.13. Registro completo:
+`docs/qa/reportes/ejecucion-ciclo-1.txt`. An√°lisis: `docs/qa/reportes/ciclo-1.md`.
 
 | Tipo | Archivo | Casos | Aprobados | Fallidos | Reproducen defectos abiertos |
 |---|---|---|---|---|---|
-| Caja negra | `test_caja_negra_*.py`, `test_tabla_decision.py` | 38 | 38 | 0 | ó |
-| Caja blanca | `test_caja_blanca.py` | 13 | 13 | 0 | ó |
-| Robustez | `test_robustez.py` | 223 | 223 | 0 | ó |
+| Caja negra | `test_caja_negra_*.py`, `test_tabla_decision.py` | 38 | 38 | 0 | ‚Äî |
+| Caja blanca | `test_caja_blanca.py` | 13 | 13 | 0 | ‚Äî |
+| Robustez | `test_robustez.py` | 223 | 223 | 0 | ‚Äî |
 | API | `test_api.py` | 19 | 16 | 0 | 3 (DEF-004) |
 | E2E | `tests/e2e/test_interfaz.py` | 13 | 9 | 0 | 4 (DEF-005, DEF-006) |
 | **Total** | | **306** | **299** | **0** | **7** |
 
 Las pruebas de defectos abiertos usan `@pytest.mark.xfail(strict=True, raises=AssertionError)`.
 
-## 7.2 Cobertura de cÛdigo ó Ciclo 1
+## 7.2 Cobertura de c√≥digo ‚Äî Ciclo 1
 
-| MÛdulo | Sentencias | Sin cubrir | Ramas | Ramas parciales | Cobertura |
+| M√≥dulo | Sentencias | Sin cubrir | Ramas | Ramas parciales | Cobertura |
 |---|---|---|---|---|---|
 | `app/core/cotizador.py` | 75 | 0 | 26 | 0 | 100 % |
 | `app/core/reglas.py` | 26 | 0 | 0 | 0 | 100 % |
@@ -422,111 +422,111 @@ Las pruebas de defectos abiertos usan `@pytest.mark.xfail(strict=True, raises=As
 | `app/main.py` | 33 | 0 | 2 | 1 | 97 % |
 | `app/schemas.py` | 28 | 0 | 0 | 0 | 100 % |
 | `app/core/__init__.py` | 4 | 0 | 0 | 0 | 100 % |
-| **Total** | **179** | **0** | **28** | **1** | **lÌneas 100 %, ramas 96 %** |
+| **Total** | **179** | **0** | **28** | **1** | **l√≠neas 100 %, ramas 96 %** |
 
-### An·lisis (ciclo 1)
+### An√°lisis (ciclo 1)
 
-- **LÌneas:** 179/179 = **100 %** (? 85 % exigido).
+- **L√≠neas:** 179/179 = **100 %** (? 85 % exigido).
 - **Ramas:** 27/28 = **96 %** (? 85 % exigido). `cotizador.py` tiene 26/26 ramas cubiertas
   (los 13 caminos de caja blanca recorren todas las decisiones).
-- La ˙nica rama parcial estaba en `main.py` (montaje del frontend si existe la carpeta):
-  cÛdigo de despliegue, no de negocio. Se dejÛ visible a propÛsito (sin `# pragma: no cover`).
+- La √∫nica rama parcial estaba en `main.py` (montaje del frontend si existe la carpeta):
+  c√≥digo de despliegue, no de negocio. Se dej√≥ visible a prop√≥sito (sin `# pragma: no cover`).
 - La CI falla si la cobertura baja de 85 % (`--cov-fail-under=85`).
 
 **Evidencia visual:** capturas en el monorepo original / informe PDF
-(`cobertura-resumen.png`). Tras una nueva ejecuciÛn, adjuntar el HTML de
+(`cobertura-resumen.png`). Tras una nueva ejecuci√≥n, adjuntar el HTML de
 `backend/reports/coverage-html/index.html` o el artefacto de Actions.
 
-## 7.3 ActualizaciÛn ciclo 2 (25 oct 2026) ó post DEF-004
+## 7.3 Actualizaci√≥n ciclo 2 (25 oct 2026) ‚Äî post DEF-004
 
-Fuente: `fastexpress-api/docs/backend/metricas-ciclo-2.md` (mediciÛn de Backend en Windows).
+Fuente: `fastexpress-api/docs/backend/metricas-ciclo-2.md` (medici√≥n de Backend en Windows).
 
-| Indicador | Ciclo 1 | Ciclo 2 | Meta | øCumple? |
+| Indicador | Ciclo 1 | Ciclo 2 | Meta | ¬øCumple? |
 |---|---|---|---|---|
-| Cobertura de lÌneas | 100 % | **97.8 %** (178/182) | ? 85 % | SÌ |
-| Cobertura de ramas | 96 % | **96.7 %** (29/30) | ? 85 % | SÌ |
-| Pruebas suite principal | 290 + 3 xfail | **292** aprobadas, 0 xfail DEF-004 | ó | SÌ |
-| Complejidad m·xima | 7 | 7 | ? 10 | SÌ |
+| Cobertura de l√≠neas | 100 % | **97.8 %** (178/182) | ? 85 % | S√≠ |
+| Cobertura de ramas | 96 % | **96.7 %** (29/30) | ? 85 % | S√≠ |
+| Pruebas suite principal | 290 + 3 xfail | **292** aprobadas, 0 xfail DEF-004 | ‚Äî | S√≠ |
+| Complejidad m√°xima | 7 | 7 | ? 10 | S√≠ |
 
-**Nota:** la bajada de lÌneas 100 % ? 97.8 % se debe a que, con repos separados, las lÌneas
-que servÌan el frontend est·tico en la API ya no se ejecutan. La lÛgica de negocio
-(`cotizador.py`) sigue en **100 %** de lÌneas y ramas.
+**Nota:** la bajada de l√≠neas 100 % ? 97.8 % se debe a que, con repos separados, las l√≠neas
+que serv√≠an el frontend est√°tico en la API ya no se ejecutan. La l√≥gica de negocio
+(`cotizador.py`) sigue en **100 %** de l√≠neas y ramas.
 
 ## 7.4 Evidencia de pruebas de sistema
 
-- CotizaciÛn v·lida (UI-06): 10 kg, $250, FRECUENTE, EXPRESS ? total **$55.63**.
+- Cotizaci√≥n v√°lida (UI-06): 10 kg, $250, FRECUENTE, EXPRESS ? total **$55.63**.
 - Rechazo por peso (UI-05): 21 kg ? sello "Rechazado".
 - DEF-004 (ciclo 2): peso de 29 nueves ? **422** `LIMITE_PESO_EXCEDIDO` (antes 500).
   Evidencias: `docs/qa/evidencias/DEF-004-*.png`.
 
 ---
 
-# 8. GestiÛn de defectos
+# 8. Gesti√≥n de defectos
 
-El ciclo de vida (Nuevo ? Asignado ? En correcciÛn ? Listo para verificar ? Cerrado)
-est· en `docs/proceso/ciclo-de-vida-defectos.md`. Los reportes detallados viven en
+El ciclo de vida (Nuevo ? Asignado ? En correcci√≥n ? Listo para verificar ? Cerrado)
+est√° en `docs/proceso/ciclo-de-vida-defectos.md`. Los reportes detallados viven en
 `docs/qa/defectos/`.
 
 ## 8.1 Resumen
 
-| ID | TÌtulo breve | ¡rea | Severidad | Estado al 25ñ26 oct 2026 |
+| ID | T√≠tulo breve | √Årea | Severidad | Estado al 25‚Äì26 oct 2026 |
 |---|---|---|---|---|
-| DEF-001 | API 404 en mÈtodo no permitido | Backend | Media | Cerrado (cÛdigo) |
-| DEF-002 | GuÌa anterior visible tras error de validaciÛn | Frontend | Alta | Cerrado (cÛdigo) |
-| DEF-003 | Cinta Express tapa texto | Frontend | Baja | Cerrado (cÛdigo) |
-| DEF-004 | API 500 con n˙meros enormes | Backend | Alta | **Cerrado** ó issue [#1](https://github.com/eldani13/fastexpress-api/issues/1), PR [#2](https://github.com/eldani13/fastexpress-api/pull/2) |
-| DEF-005 | Error de servidor mostrado como falta de conexiÛn | Frontend | Media | Abierto / en correcciÛn |
-| DEF-006 | Separador de miles con mensaje engaÒoso | Frontend | Media | Abierto / en correcciÛn |
+| DEF-001 | API 404 en m√©todo no permitido | Backend | Media | Cerrado (c√≥digo) |
+| DEF-002 | Gu√≠a anterior visible tras error de validaci√≥n | Frontend | Alta | Cerrado (c√≥digo) |
+| DEF-003 | Cinta Express tapa texto | Frontend | Baja | Cerrado (c√≥digo) |
+| DEF-004 | API 500 con n√∫meros enormes | Backend | Alta | **Cerrado** ‚Äî issue [#1](https://github.com/eldani13/fastexpress-api/issues/1), PR [#2](https://github.com/eldani13/fastexpress-api/pull/2) |
+| DEF-005 | Error de servidor mostrado como falta de conexi√≥n | Frontend | Media | Abierto / en correcci√≥n |
+| DEF-006 | Separador de miles con mensaje enga√±oso | Frontend | Media | Abierto / en correcci√≥n |
 
 ## 8.2 DEF-004 (verificado en ciclo 2)
 
 - **Esperado:** 422 `LIMITE_PESO_EXCEDIDO`.
 - **Obtenido (antes):** 500 texto plano.
-- **Causa raÌz:** `quantize` / precisiÛn decimal 28 dÌgitos.
-- **CorrecciÛn:** `_tiene_mas_de_dos_decimales` con `as_tuple()`; se quitÛ el `xfail`.
-- **VerificaciÛn QA:** Swagger + fusiÛn del PR por CODEOWNER.
+- **Causa ra√≠z:** `quantize` / precisi√≥n decimal 28 d√≠gitos.
+- **Correcci√≥n:** `_tiene_mas_de_dos_decimales` con `as_tuple()`; se quit√≥ el `xfail`.
+- **Verificaci√≥n QA:** Swagger + fusi√≥n del PR por CODEOWNER.
 
 ## 8.3 DEF-005 y DEF-006
 
-Pendientes de cierre formal en Frontend. Las pruebas E2E de reproducciÛn permanecen
-como regresiÛn cuando se quiten los `xfail` en el mismo PR de correcciÛn.
+Pendientes de cierre formal en Frontend. Las pruebas E2E de reproducci√≥n permanecen
+como regresi√≥n cuando se quiten los `xfail` en el mismo PR de correcci√≥n.
 
 ---
 
-# 9. EvaluaciÛn del producto seg˙n ISO 9126
+# 9. Evaluaci√≥n del producto seg√∫n ISO 9126
 
 Responsable de consolidar: QA. Backend aporta fiabilidad/eficiencia/mantenibilidad;
 Frontend usabilidad/portabilidad; QA funcionalidad y defectos.
 
-Niveles: **3** cumple la meta ∑ **2** cerca ∑ **1** no cumple o afecta el uso.
+Niveles: **3** cumple la meta ¬∑ **2** cerca ¬∑ **1** no cumple o afecta el uso.
 
 ## 9.1 Indicadores (ciclo 1 y avances ciclo 2)
 
-| CaracterÌstica | Indicador | Meta | Ciclo 1 | Nivel C1 | Ciclo 2 (parcial) | Nivel C2 |
+| Caracter√≠stica | Indicador | Meta | Ciclo 1 | Nivel C1 | Ciclo 2 (parcial) | Nivel C2 |
 |---|---|---|---|---|---|---|
 | Funcionalidad | Completitud de reglas | 100 % | 5/5 | 3 | 5/5 | 3 |
-| Funcionalidad | Exactitud del c·lculo | 100 % | 51/51 | 3 | (misma suite) | 3 |
-| Funcionalidad | ValidaciÛn en servidor | 100 % | 4/4 | 3 | 4/4 | 3 |
-| Fiabilidad | Densidad de defectos | ? 10 / KLOC | 7.6 | 3 | pendiente consolidar | ó |
-| Fiabilidad | Eficacia de correcciÛn | 100 % al cierre | 3/6 = 50 % | 1 | 4/6 tras DEF-004* | 2* |
+| Funcionalidad | Exactitud del c√°lculo | 100 % | 51/51 | 3 | (misma suite) | 3 |
+| Funcionalidad | Validaci√≥n en servidor | 100 % | 4/4 | 3 | 4/4 | 3 |
+| Fiabilidad | Densidad de defectos | ? 10 / KLOC | 7.6 | 3 | pendiente consolidar | ‚Äî |
+| Fiabilidad | Eficacia de correcci√≥n | 100 % al cierre | 3/6 = 50 % | 1 | 4/6 tras DEF-004* | 2* |
 | Fiabilidad | Robustez aleatoria | 100 % | 1000/1000 | 3 | 1000/1000 | 3 |
 | Fiabilidad | Robustez extremos | 100 % | 1/5 = 20 % | 1 | **5/5 = 100 %** | **3** |
-| Usabilidad | Campos con ayuda | 100 % | 4/4 | 3 | ó | ó |
-| Usabilidad | Errores que orientan | 100 % | 6/8 = 75 % | 1 | pendiente DEF-005/006 | ó |
-| Usabilidad | DiseÒo adaptable | 100 % | 2/2 | 3 | ó | ó |
+| Usabilidad | Campos con ayuda | 100 % | 4/4 | 3 | ‚Äî | ‚Äî |
+| Usabilidad | Errores que orientan | 100 % | 6/8 = 75 % | 1 | pendiente DEF-005/006 | ‚Äî |
+| Usabilidad | Dise√±o adaptable | 100 % | 2/2 | 3 | ‚Äî | ‚Äî |
 | Eficiencia | Tiempo p95 | ? 500 ms | 2.1 ms | 3 | 1.24 ms | 3 |
-| Mantenibilidad | Complejidad m·x. | ? 10 | 7 | 3 | 7 | 3 |
-| Mantenibilidad | CentralizaciÛn reglas | 100 % | 14/14 | 3 | 14/14 | 3 |
+| Mantenibilidad | Complejidad m√°x. | ? 10 | 7 | 3 | 7 | 3 |
+| Mantenibilidad | Centralizaci√≥n reglas | 100 % | 14/14 | 3 | 14/14 | 3 |
 | Mantenibilidad | Cobertura de ramas | ? 85 % | 96 % | 3 | 96.7 % | 3 |
 | Mantenibilidad | Reglas con prueba | 100 % | 5/5 | 3 | 5/5 | 3 |
-| Portabilidad | SO verificados | 2 de 2 | Linux sÌ; Win. pendiente | ó | Backend midiÛ en Windows | ó |
+| Portabilidad | SO verificados | 2 de 2 | Linux s√≠; Win. pendiente | ‚Äî | Backend midi√≥ en Windows | ‚Äî |
 
 \* Eficacia 4/6 ? 67 % tras cerrar DEF-004; sube a 100 % cuando se cierren DEF-005 y DEF-006.
 
 Detalle backend ciclo 2: repo API `docs/backend/metricas-ciclo-2.md`.  
 Tabla viva del equipo: `docs/calidad/metricas.md`.
 
-## 9.2 CÛmo se mide
+## 9.2 C√≥mo se mide
 
 | Indicador | Procedimiento |
 |---|---|
@@ -534,7 +534,7 @@ Tabla viva del equipo: `docs/calidad/metricas.md`.
 | Cobertura | `pytest` + HTML en `reports/coverage-html/` |
 | Complejidad | `radon cc app -s -a` |
 | Robustez / tiempo | `python scripts/medir_robustez.py` (API encendida) |
-| Extremos | Casos DEF-004 + sesiÛn exploratoria |
+| Extremos | Casos DEF-004 + sesi√≥n exploratoria |
 
 ---
 
@@ -542,17 +542,17 @@ Tabla viva del equipo: `docs/calidad/metricas.md`.
 
 ## 10.1 Conclusiones
 
-1. **El sistema cumple las reglas de negocio del enunciado (BR-01ÖBR-04)** y la BR-05
+1. **El sistema cumple las reglas de negocio del enunciado (BR-01‚Ä¶BR-04)** y la BR-05
    propuesta. Los 38 casos de caja negra y los 13 de caja blanca coinciden al centavo.
-2. **Se superÛ el umbral de cobertura del 85 %** en lÌneas y ramas (ciclo 1: 100 % / 96 %;
-   ciclo 2: 97.8 % / 96.7 %, con lÛgica de negocio al 100 %).
+2. **Se super√≥ el umbral de cobertura del 85 %** en l√≠neas y ramas (ciclo 1: 100 % / 96 %;
+   ciclo 2: 97.8 % / 96.7 %, con l√≥gica de negocio al 100 %).
 3. **La complejidad es baja y comprobada:** V(G) = 6 y 7 en las funciones principales,
-   calculada por tres mÈtodos y confirmada con `radon`.
-4. **DiseÒar las pruebas antes del cÛdigo** (caso R4) llevÛ a usar `Decimal` y evitÛ un
+   calculada por tres m√©todos y confirmada con `radon`.
+4. **Dise√±ar las pruebas antes del c√≥digo** (caso R4) llev√≥ a usar `Decimal` y evit√≥ un
    error de redondeo de un centavo.
-5. **DEF-004** (500 con n˙meros enormes) se corrigiÛ y verificÛ; la robustez ante extremos
-   pasÛ de 20 % a 100 %.
-6. **Las pruebas exploratorias** encontraron defectos que la suite inicial no cubrÌa
+5. **DEF-004** (500 con n√∫meros enormes) se corrigi√≥ y verific√≥; la robustez ante extremos
+   pas√≥ de 20 % a 100 %.
+6. **Las pruebas exploratorias** encontraron defectos que la suite inicial no cubr√≠a
    (valores extremos y mensajes de UI).
 
 ## 10.2 Recomendaciones
@@ -563,13 +563,13 @@ Tabla viva del equipo: `docs/calidad/metricas.md`.
 3. Exportar este informe a PDF para la entrega formal (partir de `INFORME-TECNICO.md`).
 4. Adjuntar captura actualizada de cobertura (Actions artifact o `coverage-html`).
 
-## 10.3 Cumplimiento explÌcito del enunciado
+## 10.3 Cumplimiento expl√≠cito del enunciado
 
-| Entregable B | Estado en este proyecto de documentaciÛn |
+| Entregable B | Estado en este proyecto de documentaci√≥n |
 |---|---|
-| Caja negra EP + BVA (Peso y Monto) | Cubierto ó ß5 |
-| Tabla de decisiÛn Cliente ◊ EnvÌo | Cubierto ó ß5.5 |
-| CFG + V(G) + caminos | Cubierto ó ß6 |
-| Cobertura ? 85 % con an·lisis | Cubierto ó ß7 |
+| Caja negra EP + BVA (Peso y Monto) | Cubierto ‚Äî ¬ß5 |
+| Tabla de decisi√≥n Cliente √ó Env√≠o | Cubierto ‚Äî ¬ß5.5 |
+| CFG + V(G) + caminos | Cubierto ‚Äî ¬ß6 |
+| Cobertura ? 85 % con an√°lisis | Cubierto ‚Äî ¬ß7 |
 
 ---

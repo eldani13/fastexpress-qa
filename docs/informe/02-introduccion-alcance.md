@@ -1,18 +1,18 @@
-# 2. IntroducciÛn y alcance
+# 2. Introducci√≥n y alcance
 
-FastExpress cotiza el valor de un envÌo a partir del peso, el valor declarado, el tipo de
-cliente y el tipo de envÌo. El sistema se validÛ con una suite automatizada de caja negra,
-caja blanca, API y E2E, midiendo cobertura de lÌneas y ramas por encima del 85 % exigido.
+FastExpress cotiza el valor de un env√≠o a partir del peso, el valor declarado, el tipo de
+cliente y el tipo de env√≠o. El sistema se valid√≥ con una suite automatizada de caja negra,
+caja blanca, API y E2E, midiendo cobertura de l√≠neas y ramas por encima del 85 % exigido.
 
-**Objetivo.** Construir el mÛdulo de cotizaciÛn y demostrar su calidad con pruebas de caja
-negra, caja blanca, cobertura y evaluaciÛn del producto.
+**Objetivo.** Construir el m√≥dulo de cotizaci√≥n y demostrar su calidad con pruebas de caja
+negra, caja blanca, cobertura y evaluaci√≥n del producto.
 
 ## Alcance
 
-- Algoritmo de c·lculo con las reglas BR-01 a BR-04 del enunciado y BR-05 propuesta por el equipo.
-- API REST que expone la cotizaciÛn y responde errores con cÛdigos de negocio.
+- Algoritmo de c√°lculo con las reglas BR-01 a BR-04 del enunciado y BR-05 propuesta por el equipo.
+- API REST que expone la cotizaci√≥n y responde errores con c√≥digos de negocio.
 - Interfaz web (Next.js) con formulario y desglose del valor.
 - Suite de pruebas automatizadas (PyTest) con reporte de cobertura.
-- IntegraciÛn continua en el repositorio de la API y proceso con issues, ramas y pull requests.
+- Integraci√≥n continua en el repositorio de la API y proceso con issues, ramas y pull requests.
 
-**Fuera de alcance.** Persistencia de cotizaciones, autenticaciÛn, pagos y rastreo de envÌos.
+**Fuera de alcance.** Persistencia de cotizaciones, autenticaci√≥n, pagos y rastreo de env√≠os.

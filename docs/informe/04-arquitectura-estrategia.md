@@ -1,11 +1,11 @@
 # 4. Arquitectura, herramientas y estrategia de pruebas
 
-La lógica de negocio vive en un módulo independiente de la API y de la interfaz
+La lÃ³gica de negocio vive en un mÃ³dulo independiente de la API y de la interfaz
 (`fastexpress-api/app/core/`), lo que permite probarla sin levantar el servidor.
 
 ## 4.1 Componentes
 
-| Componente | Tecnología | Ubicación |
+| Componente | TecnologÃ­a | UbicaciÃ³n |
 |---|---|---|
 | Core de negocio | Python 3.12+, `decimal.Decimal` | `app/core/` (`reglas.py`, `errores.py`, `cotizador.py`) |
 | API REST | FastAPI | `app/main.py`, `app/schemas.py` |
@@ -15,12 +15,12 @@ La lógica de negocio vive en un módulo independiente de la API y de la interfaz
 
 ## 4.2 Estrategia de pruebas
 
-| Nivel | Técnica | Objeto | Casos (ciclo 1) |
+| Nivel | TÃ©cnica | Objeto | Casos (ciclo 1) |
 |---|---|---|---|
-| Unidad / integración lógica | Caja negra (EP, BVA, decisión) | Peso, monto, cliente×envío | 38 |
+| Unidad / integraciÃ³n lÃ³gica | Caja negra (EP, BVA, decisiÃ³n) | Peso, monto, clienteÃ—envÃ­o | 38 |
 | Unidad | Caja blanca (caminos) | `calcular_tarifa`, `validar_cotizacion` | 13 |
-| Unidad | Robustez | Entradas atípicas y propiedad del desglose | 223 |
+| Unidad | Robustez | Entradas atÃ­picas y propiedad del desglose | 223 |
 | API | Contrato HTTP | `POST /api/v1/cotizaciones` | 16 + 3 xfail DEF-004 |
 | Sistema | E2E Playwright | Interfaz | 9 + 4 xfail DEF-005/006 |
 
-La matriz de caja negra se escribió **antes** del código, según la hoja de ruta del proyecto.
+La matriz de caja negra se escribiÃ³ **antes** del cÃ³digo, segÃºn la hoja de ruta del proyecto.

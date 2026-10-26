@@ -1,29 +1,29 @@
-# 8. GestiÛn de defectos
+# 8. Gesti√≥n de defectos
 
-El ciclo de vida (Nuevo ? Asignado ? En correcciÛn ? Listo para verificar ? Cerrado)
-est· en `docs/proceso/ciclo-de-vida-defectos.md`. Los reportes detallados viven en
+El ciclo de vida (Nuevo ? Asignado ? En correcci√≥n ? Listo para verificar ? Cerrado)
+est√° en `docs/proceso/ciclo-de-vida-defectos.md`. Los reportes detallados viven en
 `docs/qa/defectos/`.
 
 ## 8.1 Resumen
 
-| ID | TÌtulo breve | ¡rea | Severidad | Estado al 25ñ26 oct 2026 |
+| ID | T√≠tulo breve | √Årea | Severidad | Estado al 25‚Äì26 oct 2026 |
 |---|---|---|---|---|
-| DEF-001 | API 404 en mÈtodo no permitido | Backend | Media | Cerrado (cÛdigo) |
-| DEF-002 | GuÌa anterior visible tras error de validaciÛn | Frontend | Alta | Cerrado (cÛdigo) |
-| DEF-003 | Cinta Express tapa texto | Frontend | Baja | Cerrado (cÛdigo) |
-| DEF-004 | API 500 con n˙meros enormes | Backend | Alta | **Cerrado** ó issue [#1](https://github.com/eldani13/fastexpress-api/issues/1), PR [#2](https://github.com/eldani13/fastexpress-api/pull/2) |
-| DEF-005 | Error de servidor mostrado como falta de conexiÛn | Frontend | Media | Abierto / en correcciÛn |
-| DEF-006 | Separador de miles con mensaje engaÒoso | Frontend | Media | Abierto / en correcciÛn |
+| DEF-001 | API 404 en m√©todo no permitido | Backend | Media | Cerrado (c√≥digo) |
+| DEF-002 | Gu√≠a anterior visible tras error de validaci√≥n | Frontend | Alta | Cerrado (c√≥digo) |
+| DEF-003 | Cinta Express tapa texto | Frontend | Baja | Cerrado (c√≥digo) |
+| DEF-004 | API 500 con n√∫meros enormes | Backend | Alta | **Cerrado** ‚Äî issue [#1](https://github.com/eldani13/fastexpress-api/issues/1), PR [#2](https://github.com/eldani13/fastexpress-api/pull/2) |
+| DEF-005 | Error de servidor mostrado como falta de conexi√≥n | Frontend | Media | Abierto / en correcci√≥n |
+| DEF-006 | Separador de miles con mensaje enga√±oso | Frontend | Media | Abierto / en correcci√≥n |
 
 ## 8.2 DEF-004 (verificado en ciclo 2)
 
 - **Esperado:** 422 `LIMITE_PESO_EXCEDIDO`.
 - **Obtenido (antes):** 500 texto plano.
-- **Causa raÌz:** `quantize` / precisiÛn decimal 28 dÌgitos.
-- **CorrecciÛn:** `_tiene_mas_de_dos_decimales` con `as_tuple()`; se quitÛ el `xfail`.
-- **VerificaciÛn QA:** Swagger + fusiÛn del PR por CODEOWNER.
+- **Causa ra√≠z:** `quantize` / precisi√≥n decimal 28 d√≠gitos.
+- **Correcci√≥n:** `_tiene_mas_de_dos_decimales` con `as_tuple()`; se quit√≥ el `xfail`.
+- **Verificaci√≥n QA:** Swagger + fusi√≥n del PR por CODEOWNER.
 
 ## 8.3 DEF-005 y DEF-006
 
-Pendientes de cierre formal en Frontend. Las pruebas E2E de reproducciÛn permanecen
-como regresiÛn cuando se quiten los `xfail` en el mismo PR de correcciÛn.
+Pendientes de cierre formal en Frontend. Las pruebas E2E de reproducci√≥n permanecen
+como regresi√≥n cuando se quiten los `xfail` en el mismo PR de correcci√≥n.

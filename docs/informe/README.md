@@ -1,47 +1,47 @@
-# Informe tÈcnico de Calidad de Software ó FastExpress
+# Informe t√©cnico de Calidad de Software ‚Äî FastExpress
 
 **Asignatura:** Calidad de Software  
-**Sistema:** MÛdulo de CotizaciÛn de EnvÌos y Descuentos "FastExpress"  
-**Equipo:** Backend (Juli·n Robles), Frontend (Cybort8), QA (Luis Daniel Cantillo Ospino)  
+**Sistema:** M√≥dulo de Cotizaci√≥n de Env√≠os y Descuentos "FastExpress"  
+**Equipo:** Backend (Juli√°n Robles), Frontend (Cybort8), QA (Luis Daniel Cantillo Ospino)  
 **Entrega:** martes 27 de octubre de 2026, 8:15 p.m.
 
-::: tip CÛmo leerlo
-Desde la raÌz del repo QA: `npm install` ? `npm run dev` ? http://localhost:5173  
-Navega con el men˙. Los grafos CFG se renderizan con Mermaid.
+::: tip C√≥mo leerlo
+Desde la ra√≠z del repo QA: `npm install` ? `npm run dev` ? http://localhost:5173  
+Navega con el men√∫. Los grafos CFG se renderizan con Mermaid.
 :::
 
 Este directorio es el **informe** exigido por el enunciado (*PROYECTO INTEGRADOR*).
-Cada archivo es una secciÛn del sitio; el documento unificado es
+Cada archivo es una secci√≥n del sitio; el documento unificado es
 [INFORME-TECNICO](./INFORME-TECNICO).
 
 ## Cumplimiento del enunciado (entregable B)
 
-| # | Requisito del profesor | DÛnde est· |
+| # | Requisito del profesor | D√≥nde est√° |
 |---|---|---|
 | 1 | Plan de caja negra: particiones y BVA de **Peso** y **Monto** | [05-caja-negra](./05-caja-negra) |
-| 1b | **Tabla de decisiÛn** Cliente ◊ EnvÌo | [05-caja-negra](./05-caja-negra) ß5.5 |
-| 2 | Diagrama **CFG** del algoritmo de c·lculo | [06-caja-blanca](./06-caja-blanca) (Mermaid) |
-| 2b | C·lculo paso a paso de **V(G)** | [06-caja-blanca](./06-caja-blanca) |
-| 2c | Caminos independientes identificados y probados | [06-caja-blanca](./06-caja-blanca) C1ñC6, V1ñV7 |
-| 3 | Reporte de **cobertura** (? 85 % lÌneas y ramas) + an·lisis | [07-cobertura-resultados](./07-cobertura-resultados) |
+| 1b | **Tabla de decisi√≥n** Cliente √ó Env√≠o | [05-caja-negra](./05-caja-negra) ¬ß5.5 |
+| 2 | Diagrama **CFG** del algoritmo de c√°lculo | [06-caja-blanca](./06-caja-blanca) (Mermaid) |
+| 2b | C√°lculo paso a paso de **V(G)** | [06-caja-blanca](./06-caja-blanca) |
+| 2c | Caminos independientes identificados y probados | [06-caja-blanca](./06-caja-blanca) C1‚ÄìC6, V1‚ÄìV7 |
+| 3 | Reporte de **cobertura** (? 85 % l√≠neas y ramas) + an√°lisis | [07-cobertura-resultados](./07-cobertura-resultados) |
 
-## Õndice
+## √çndice
 
-| SecciÛn | Contenido |
+| Secci√≥n | Contenido |
 |---|---|
 | [01](./01-portada-y-datos) | Datos del proyecto y roles |
 | [02](./02-introduccion-alcance) | Objetivo y alcance |
-| [03](./03-especificacion) | Reglas BR-01ÖBR-05 y supuestos |
+| [03](./03-especificacion) | Reglas BR-01‚Ä¶BR-05 y supuestos |
 | [04](./04-arquitectura-estrategia) | Arquitectura y estrategia de pruebas |
-| [05](./05-caja-negra) | **Obligatorio** ó EP, BVA, decisiÛn, UI |
-| [06](./06-caja-blanca) | **Obligatorio** ó CFG, V(G), caminos |
-| [07](./07-cobertura-resultados) | **Obligatorio** ó ejecuciÛn y cobertura |
-| [08](./08-defectos) | GestiÛn de DEF-001Ö006 |
-| [09](./09-metricas-iso) | EvaluaciÛn ISO 9126 |
+| [05](./05-caja-negra) | **Obligatorio** ‚Äî EP, BVA, decisi√≥n, UI |
+| [06](./06-caja-blanca) | **Obligatorio** ‚Äî CFG, V(G), caminos |
+| [07](./07-cobertura-resultados) | **Obligatorio** ‚Äî ejecuci√≥n y cobertura |
+| [08](./08-defectos) | Gesti√≥n de DEF-001‚Ä¶006 |
+| [09](./09-metricas-iso) | Evaluaci√≥n ISO 9126 |
 | [10](./10-conclusiones) | Conclusiones y recomendaciones |
 | [Completo](./INFORME-TECNICO) | Documento ensamblado |
 
-## Repositorios de cÛdigo
+## Repositorios de c√≥digo
 
 | Rol | Repositorio |
 |---|---|
@@ -51,8 +51,8 @@ Cada archivo es una secciÛn del sitio; el documento unificado es
 
 ## Fuentes de evidencia
 
-- EjecuciÛn ciclo 1: `docs/qa/reportes/`
-- Cat·logo: `docs/qa/casos-de-prueba.md`
-- MÈtricas backend ciclo 2: repo API `docs/backend/metricas-ciclo-2.md`
+- Ejecuci√≥n ciclo 1: `docs/qa/reportes/`
+- Cat√°logo: `docs/qa/casos-de-prueba.md`
+- M√©tricas backend ciclo 2: repo API `docs/backend/metricas-ciclo-2.md`
 
 **Regla:** las cifras provienen de ejecuciones reales documentadas.

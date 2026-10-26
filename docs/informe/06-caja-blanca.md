@@ -1,18 +1,18 @@
 # 6. Plan de pruebas de caja blanca
 
-**Requisito del enunciado:** diagrama CFG del algoritmo principal, cálculo de V(G) y
+**Requisito del enunciado:** diagrama CFG del algoritmo principal, cÃ¡lculo de V(G) y
 cobertura de caminos independientes.
 
-El algoritmo se dividió en dos funciones con V(G) = 6 y 7; sus **13 caminos independientes**
+El algoritmo se dividiÃ³ en dos funciones con V(G) = 6 y 7; sus **13 caminos independientes**
 tienen cada uno una prueba automatizada y las 13 se aprobaron (ciclo 1).
-Se separó validación y cálculo para que cada grafo sea legible y ninguna función supere
-el umbral de McCabe (V(G) ? 10). En el código, las decisiones llevan comentarios `# D1`, `# D2`…
+Se separÃ³ validaciÃ³n y cÃ¡lculo para que cada grafo sea legible y ninguna funciÃ³n supere
+el umbral de McCabe (V(G) ? 10). En el cÃ³digo, las decisiones llevan comentarios `# D1`, `# D2`â€¦
 
 **Archivo de pruebas:** `tests/unit/test_caja_blanca.py`
 
-## 6.1 Función principal: `calcular_tarifa`
+## 6.1 FunciÃ³n principal: `calcular_tarifa`
 
-Pseudocódigo (nodos alineados al grafo):
+PseudocÃ³digo (nodos alineados al grafo):
 
 ```text
 1  peso, monto = validar_cotizacion(...)
@@ -33,47 +33,47 @@ Pseudocódigo (nodos alineados al grafo):
 16 total = ...; return Cotizacion
 ```
 
-### Grafo de flujo de control (CFG) — `calcular_tarifa`
+### Grafo de flujo de control (CFG) â€” `calcular_tarifa`
 
 ```mermaid
 flowchart TD
   N1([1 Inicio / validar]) --> N2{2 D1: peso ? 5.00?}
-  N2 -->|sí| N3[3 tarifa tramo 1]
+  N2 -->|sÃ­| N3[3 tarifa tramo 1]
   N2 -->|no| N4[4 tarifa tramo 2]
   N3 --> N5{5 D2: FRECUENTE?}
   N4 --> N5
-  N5 -->|sí| N6[6 desc. 10%]
+  N5 -->|sÃ­| N6[6 desc. 10%]
   N5 -->|no| N7{7 D3: VIP?}
-  N7 -->|sí| N8[8 desc. 20%]
+  N7 -->|sÃ­| N8[8 desc. 20%]
   N7 -->|no| N9[9 desc. 0%]
   N6 --> N10{10 D4: EXPRESS?}
   N8 --> N10
   N9 --> N10
-  N10 -->|sí| N11[11 recargo 25%]
+  N10 -->|sÃ­| N11[11 recargo 25%]
   N10 -->|no| N12[12 recargo 0%]
   N11 --> N13{13 D5: monto > 100?}
   N12 --> N13
-  N13 -->|sí| N14[14 seguro 2%]
+  N13 -->|sÃ­| N14[14 seguro 2%]
   N13 -->|no| N15[15 seguro 0]
   N14 --> N16([16 Total / fin])
   N15 --> N16
 ```
 
-### Cálculo de la complejidad ciclomática — `calcular_tarifa`
+### CÃ¡lculo de la complejidad ciclomÃ¡tica â€” `calcular_tarifa`
 
-Los tres métodos dan el mismo resultado. `radon cc` confirma: `calcular_tarifa - B (6)`.
+Los tres mÃ©todos dan el mismo resultado. `radon cc` confirma: `calcular_tarifa - B (6)`.
 
-| Método | Fórmula | Datos | Resultado |
+| MÃ©todo | FÃ³rmula | Datos | Resultado |
 |---|---|---|---|
 | Aristas y nodos | V(G) = E ? N + 2 | E = 20, N = 16 | **6** |
 | Nodos predicado | V(G) = P + 1 | P = 5 (nodos 2, 5, 7, 10, 13) | **6** |
 | Regiones | V(G) = regiones | 5 cerradas + 1 exterior | **6** |
 
-### Caminos independientes — `calcular_tarifa`
+### Caminos independientes â€” `calcular_tarifa`
 
-V(G) = 6 ? se necesitan **6 caminos**. C1 es el camino base; cada camino siguiente cambia una decisión.
+V(G) = 6 ? se necesitan **6 caminos**. C1 es el camino base; cada camino siguiente cambia una decisiÃ³n.
 
-| Camino | Secuencia de nodos | Decisión que cambia | Entrada (peso, cliente, envío, monto) | Total | Prueba | Estado |
+| Camino | Secuencia de nodos | DecisiÃ³n que cambia | Entrada (peso, cliente, envÃ­o, monto) | Total | Prueba | Estado |
 |---|---|---|---|---|---|---|
 | C1 | 1-2-3-5-7-9-10-12-13-15-16 | Base | 3, NUEVO, ESTANDAR, 50 | $11.00 | C1-base | Aprobado |
 | C2 | 1-2-4-5-7-9-10-12-13-15-16 | D1 falso (tramo 2) | 12, NUEVO, ESTANDAR, 50 | $53.00 | C2-D1-falso | Aprobado |
@@ -82,57 +82,57 @@ V(G) = 6 ? se necesitan **6 caminos**. C1 es el camino base; cada camino siguien
 | C5 | 1-2-3-5-7-9-10-11-13-15-16 | D4 verdadero (EXPRESS) | 3, NUEVO, EXPRESS, 50 | $13.75 | C5-D4-verdadero | Aprobado |
 | C6 | 1-2-3-5-7-9-10-12-13-14-16 | D5 verdadero (seguro) | 3, NUEVO, ESTANDAR, 500 | $21.00 | C6-D5-verdadero | Aprobado |
 
-## 6.2 Función de validación: `validar_cotizacion`
+## 6.2 FunciÃ³n de validaciÃ³n: `validar_cotizacion`
 
 ```text
 1  peso = _a_decimal(...); monto = _a_decimal(...)
-2  if más de 2 decimales en peso:     # D1 ? 3 error
-4  if peso < mínimo:                  # D2 ? 5 error
-6  if peso > máximo:                  # D3 ? 7 rechazo
-8  if más de 2 decimales en monto:    # D4 ? 9 error
-10 if monto < mínimo:                 # D5 ? 11 error
-12 if monto > máximo:                 # D6 ? 13 rechazo
+2  if mÃ¡s de 2 decimales en peso:     # D1 ? 3 error
+4  if peso < mÃ­nimo:                  # D2 ? 5 error
+6  if peso > mÃ¡ximo:                  # D3 ? 7 rechazo
+8  if mÃ¡s de 2 decimales en monto:    # D4 ? 9 error
+10 if monto < mÃ­nimo:                 # D5 ? 11 error
+12 if monto > mÃ¡ximo:                 # D6 ? 13 rechazo
 14 return peso, monto cuantizados
-15 fin (todas las salidas llegan aquí)
+15 fin (todas las salidas llegan aquÃ­)
 ```
 
-### Grafo de flujo de control (CFG) — `validar_cotizacion`
+### Grafo de flujo de control (CFG) â€” `validar_cotizacion`
 
 ```mermaid
 flowchart TD
-  N1([1 Convertir a Decimal]) --> N2{2 D1: ¿peso > 2 dec?}
-  N2 -->|sí| N3[3 PESO_INVALIDO]
-  N2 -->|no| N4{4 D2: ¿peso < mín?}
+  N1([1 Convertir a Decimal]) --> N2{2 D1: Â¿peso > 2 dec?}
+  N2 -->|sÃ­| N3[3 PESO_INVALIDO]
+  N2 -->|no| N4{4 D2: Â¿peso < mÃ­n?}
   N3 --> N15([15 Fin])
-  N4 -->|sí| N5[5 PESO_INVALIDO]
-  N4 -->|no| N6{6 D3: ¿peso > máx?}
+  N4 -->|sÃ­| N5[5 PESO_INVALIDO]
+  N4 -->|no| N6{6 D3: Â¿peso > mÃ¡x?}
   N5 --> N15
-  N6 -->|sí| N7[7 LIMITE_PESO]
-  N6 -->|no| N8{8 D4: ¿monto > 2 dec?}
+  N6 -->|sÃ­| N7[7 LIMITE_PESO]
+  N6 -->|no| N8{8 D4: Â¿monto > 2 dec?}
   N7 --> N15
-  N8 -->|sí| N9[9 MONTO_INVALIDO]
-  N8 -->|no| N10{10 D5: ¿monto < mín?}
+  N8 -->|sÃ­| N9[9 MONTO_INVALIDO]
+  N8 -->|no| N10{10 D5: Â¿monto < mÃ­n?}
   N9 --> N15
-  N10 -->|sí| N11[11 MONTO_INVALIDO]
-  N10 -->|no| N12{12 D6: ¿monto > máx?}
+  N10 -->|sÃ­| N11[11 MONTO_INVALIDO]
+  N10 -->|no| N12{12 D6: Â¿monto > mÃ¡x?}
   N11 --> N15
-  N12 -->|sí| N13[13 LIMITE_MONTO]
+  N12 -->|sÃ­| N13[13 LIMITE_MONTO]
   N12 -->|no| N14[14 return OK]
   N13 --> N15
   N14 --> N15
 ```
 
-### Cálculo de V(G) — `validar_cotizacion`
+### CÃ¡lculo de V(G) â€” `validar_cotizacion`
 
 `radon`: `validar_cotizacion - B (7)`.
 
-| Método | Fórmula | Datos | Resultado |
+| MÃ©todo | FÃ³rmula | Datos | Resultado |
 |---|---|---|---|
 | Aristas y nodos | V(G) = E ? N + 2 | E = 20, N = 15 | **7** |
 | Nodos predicado | V(G) = P + 1 | P = 6 | **7** |
 | Regiones | V(G) = regiones | 6 cerradas + 1 exterior | **7** |
 
-### Caminos independientes — `validar_cotizacion`
+### Caminos independientes â€” `validar_cotizacion`
 
 | Camino | Secuencia | Entrada (peso, monto) | Resultado esperado | Prueba | Estado |
 |---|---|---|---|---|---|
@@ -144,15 +144,15 @@ flowchart TD
 | V6 | 1-2-4-6-8-10-11-15 | 3, 0 | `MONTO_INVALIDO` | V6-D5-monto-bajo-minimo | Aprobado |
 | V7 | 1-2-4-6-8-10-12-13-15 | 3, 1000.01 | `LIMITE_MONTO_EXCEDIDO` | V7-D6-monto-sobre-maximo | Aprobado |
 
-## 6.3 Complejidad del resto del código
+## 6.3 Complejidad del resto del cÃ³digo
 
-| Función | V(G) | Riesgo (McCabe) |
+| FunciÃ³n | V(G) | Riesgo (McCabe) |
 |---|---|---|
-| `validar_cotizacion` | 7 | Bajo (1–10) |
+| `validar_cotizacion` | 7 | Bajo (1â€“10) |
 | `calcular_tarifa` | 6 | Bajo |
 | `_a_decimal` | 4 | Bajo |
 | `manejar_error_entrada` (API) | 4 | Bajo |
-| Resto | 1–2 | Bajo |
+| Resto | 1â€“2 | Bajo |
 
-Promedio del backend en ciclo 1: **1.82**. Ninguna función supera 7.
-Tras DEF-004 (ciclo 2), `_tiene_mas_de_dos_decimales` pasó de V(G) 1 a 2; el máximo sigue en **7**.
+Promedio del backend en ciclo 1: **1.82**. Ninguna funciÃ³n supera 7.
+Tras DEF-004 (ciclo 2), `_tiene_mas_de_dos_decimales` pasÃ³ de V(G) 1 a 2; el mÃ¡ximo sigue en **7**.

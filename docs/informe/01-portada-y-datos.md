@@ -3,9 +3,9 @@
 | Campo | Detalle |
 |---|---|
 | Asignatura | Calidad de Software |
-| Instituci髇 | Corporaci髇 Universitaria Polit閏nico de la Costa Atl醤tica |
+| Instituci贸n | Corporaci贸n Universitaria Polit茅cnico de la Costa Atl谩ntica |
 | Proyecto | Proyecto Integrador: Sistema de Calidad y Pruebas de Software |
-| Sistema | M骴ulo de Cotizaci髇 de Env韔s y Descuentos "FastExpress" |
+| Sistema | M贸dulo de Cotizaci贸n de Env铆os y Descuentos "FastExpress" |
 | Entrega | 27 de octubre de 2026, 8:15 p.m. |
 | Modalidad | Equipo de 3 integrantes |
 
@@ -13,8 +13,8 @@
 
 | Rol | Integrante | Responsabilidad principal | Adicionales |
 |---|---|---|---|
-| Desarrollador Backend | Juli醤 Robles (`JuliannnR`) | Reglas de negocio, algoritmo y API REST | Repositorio API, CI, m閠ricas de fiabilidad/eficiencia/mantenibilidad |
-| Desarrollador Frontend | Cybort8 | Interfaz, conexi髇 con la API, validaciones de UI | Usabilidad, redise駉 y alertas |
-| Analista de Calidad (QA) | Luis Daniel Cantillo Ospino (`eldani13`) | Caja negra, caja blanca, automatizaci髇 y cobertura | Gesti髇 de defectos, trazabilidad, consolidaci髇 de m閠ricas e informe |
+| Desarrollador Backend | Juli谩n Robles (`JuliannnR`) | Reglas de negocio, algoritmo y API REST | Repositorio API, CI, m茅tricas de fiabilidad/eficiencia/mantenibilidad |
+| Desarrollador Frontend | Cybort8 | Interfaz, conexi贸n con la API, validaciones de UI | Usabilidad, redise帽o y alertas |
+| Analista de Calidad (QA) | Luis Daniel Cantillo Ospino (`eldani13`) | Caja negra, caja blanca, automatizaci贸n y cobertura | Gesti贸n de defectos, trazabilidad, consolidaci贸n de m茅tricas e informe |
 
-Todos los integrantes participan en la redacci髇 y revisi髇 de este informe.
+Todos los integrantes participan en la redacci贸n y revisi贸n de este informe.
