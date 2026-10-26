@@ -5,14 +5,6 @@
 **Equipo:** Backend (Julián Robles), Frontend (Kenneth Rojas), QA (Luis Daniel Cantillo Ospino)  
 **Entrega:** martes 27 de octubre de 2026, 8:15 p.m.
 
-::: tip Cómo leerlo
-Desde la raíz del repo QA: `npm install` ? `npm run dev` ? http://localhost:5173  
-Navega con el menú. Los grafos CFG se renderizan con Mermaid.
-:::
-
-Este directorio es el **informe** exigido por el enunciado (*PROYECTO INTEGRADOR*).
-Cada archivo es una sección del sitio; el documento unificado es
-[INFORME-TECNICO](./INFORME-TECNICO).
 
 ## Cumplimiento del enunciado (entregable B)
 
@@ -20,10 +12,10 @@ Cada archivo es una sección del sitio; el documento unificado es
 |---|---|---|
 | 1 | Plan de caja negra: particiones y BVA de **Peso** y **Monto** | [05-caja-negra](./05-caja-negra) |
 | 1b | **Tabla de decisión** Cliente × Envío | [05-caja-negra](./05-caja-negra) §5.5 |
-| 2 | Diagrama **CFG** del algoritmo de cálculo | [06-caja-blanca](./06-caja-blanca) (Mermaid) |
+| 2 | Diagrama **CFG** del algoritmo de cálculo | [06-caja-blanca](./06-caja-blanca) |
 | 2b | Cálculo paso a paso de **V(G)** | [06-caja-blanca](./06-caja-blanca) |
 | 2c | Caminos independientes identificados y probados | [06-caja-blanca](./06-caja-blanca) C1–C6, V1–V7 |
-| 3 | Reporte de **cobertura** (? 85 % líneas y ramas) + análisis | [07-cobertura-resultados](./07-cobertura-resultados) |
+| 3 | Reporte de **cobertura** (≥ 85 % líneas y ramas) + análisis | [07-cobertura-resultados](./07-cobertura-resultados) |
 
 ## Índice
 
