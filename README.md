@@ -2,6 +2,12 @@
 
 Sitio de documentación e **informe técnico de Calidad de Software** del cotizador FastExpress.
 
+## Informe listo para entregar
+
+- **PDF:** [`Informe-Tecnico-FastExpress.pdf`](./Informe-Tecnico-FastExpress.pdf)
+- **Markdown unificado:** [`docs/informe/INFORME-TECNICO.md`](./docs/informe/INFORME-TECNICO.md)
+- **Secciones del informe:** [`docs/informe/`](./docs/informe/) (`01` … `10`)
+
 ## Ejecutar (leer el informe en el navegador)
 
 ```bash
