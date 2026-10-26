@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: FastExpress QA
+  name: FastExpress
   text: Informe tecnico de Calidad
   tagline: Cotizador de envios - caja negra, caja blanca, cobertura >= 85%
   actions:

@@ -1,4 +1,4 @@
-# FastExpress QA
+# FastExpress
 
 Sitio de documentación e **informe técnico de Calidad de Software** del cotizador FastExpress.
 

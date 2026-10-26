@@ -3,7 +3,7 @@ import { withMermaid } from "vitepress-plugin-mermaid";
 
 export default withMermaid(
   defineConfig({
-    title: "FastExpress QA",
+    title: "FastExpress",
     description: "Informe tecnico de Calidad de Software - FastExpress",
     lang: "es-CO",
     cleanUrls: true,
