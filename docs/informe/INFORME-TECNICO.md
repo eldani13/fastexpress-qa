@@ -472,20 +472,20 @@ que servían el frontend estático en la API ya no se ejecutan. La lógica de ne
 
 # 8. Gestión de defectos
 
-El ciclo de vida (Nuevo ? Asignado ? En corrección ? Listo para verificar ? Cerrado)
+El ciclo de vida (Nuevo → Asignado → En corrección → Listo para verificar → Cerrado)
 está en `docs/proceso/ciclo-de-vida-defectos.md`. Los reportes detallados viven en
 `docs/qa/defectos/`.
 
 ## 8.1 Resumen
 
-| ID | Título breve | Área | Severidad | Estado al 25–26 oct 2026 |
+| ID | Título breve | Área | Severidad | Estado al 27 oct 2026 |
 |---|---|---|---|---|
 | DEF-001 | API 404 en método no permitido | Backend | Media | Cerrado (código) |
 | DEF-002 | Guía anterior visible tras error de validación | Frontend | Alta | Cerrado (código) |
 | DEF-003 | Cinta Express tapa texto | Frontend | Baja | Cerrado (código) |
 | DEF-004 | API 500 con números enormes | Backend | Alta | **Cerrado** — issue [#1](https://github.com/eldani13/fastexpress-api/issues/1), PR [#2](https://github.com/eldani13/fastexpress-api/pull/2) |
-| DEF-005 | Error de servidor mostrado como falta de conexión | Frontend | Media | Abierto / en corrección |
-| DEF-006 | Separador de miles con mensaje engañoso | Frontend | Media | Abierto / en corrección |
+| DEF-005 | Error de servidor mostrado como falta de conexión | Frontend | Media | **Cerrado (código)** — Next.js `hooks/useCotizacion.ts` |
+| DEF-006 | Separador de miles con mensaje engañoso | Frontend | Media | **Cerrado (código)** — `lib/validation/validarNumero.ts` |
 
 ## 8.2 DEF-004 (verificado en ciclo 2)
 
@@ -495,10 +495,14 @@ está en `docs/proceso/ciclo-de-vida-defectos.md`. Los reportes detallados viven
 - **Corrección:** `_tiene_mas_de_dos_decimales` con `as_tuple()`; se quitó el `xfail`.
 - **Verificación QA:** Swagger + fusión del PR por CODEOWNER.
 
-## 8.3 DEF-005 y DEF-006
+## 8.3 DEF-005 y DEF-006 (cerrados en Frontend)
 
-Pendientes de cierre formal en Frontend. Las pruebas E2E de reproducción permanecen
-como regresión cuando se quiten los `xfail` en el mismo PR de corrección.
+- **DEF-005:** un HTTP ≥ 500 ya no se muestra como “sin conexión”. Solo el `catch` de red
+  usa ese mensaje; el servidor con error muestra “Error del servidor” / código HTTP
+  (`hooks/useCotizacion.ts` + `lib/api/cotizar.ts`).
+- **DEF-006:** el monto con `detectarMiles: true` rechaza `1,000` / `1.000` con
+  “No uses separador de miles: escribe 1000…” (`lib/validation/validarNumero.ts`).
+  El peso no usa esa detección (sigue UI-03 de decimales).
 
 
 ---
@@ -518,11 +522,11 @@ Niveles: **3** cumple la meta · **2** cerca · **1** no cumple o afecta el uso.
 | Funcionalidad | Exactitud del cálculo | 100 % | 51/51 | 3 | (misma suite) | 3 |
 | Funcionalidad | Validación en servidor | 100 % | 4/4 | 3 | 4/4 | 3 |
 | Fiabilidad | Densidad de defectos | ≤ 10 / KLOC | 7.6 | 3 | pendiente consolidar | — |
-| Fiabilidad | Eficacia de corrección | 100 % al cierre | 3/6 = 50 % | 1 | 4/6 tras DEF-004* | 2* |
+| Fiabilidad | Eficacia de corrección | 100 % al cierre | 3/6 = 50 % | 1 | **6/6 = 100 %** | **3** |
 | Fiabilidad | Robustez aleatoria | 100 % | 1000/1000 | 3 | 1000/1000 | 3 |
 | Fiabilidad | Robustez extremos | 100 % | 1/5 = 20 % | 1 | **5/5 = 100 %** | **3** |
 | Usabilidad | Campos con ayuda | 100 % | 4/4 | 3 | — | — |
-| Usabilidad | Errores que orientan | 100 % | 6/8 = 75 % | 1 | pendiente DEF-005/006 | — |
+| Usabilidad | Errores que orientan | 100 % | 6/8 = 75 % | 1 | **8/8 = 100 %** (DEF-005/006) | **3** |
 | Usabilidad | Diseño adaptable | 100 % | 2/2 | 3 | — | — |
 | Eficiencia | Tiempo p95 | ? 500 ms | 2.1 ms | 3 | 1.24 ms | 3 |
 | Mantenibilidad | Complejidad máx. | ≤ 10 | 7 | 3 | 7 | 3 |
@@ -531,7 +535,7 @@ Niveles: **3** cumple la meta · **2** cerca · **1** no cumple o afecta el uso.
 | Mantenibilidad | Reglas con prueba | 100 % | 5/5 | 3 | 5/5 | 3 |
 | Portabilidad | SO verificados | 2 de 2 | Linux sí; Win. pendiente | — | Backend midió en Windows | — |
 
-\* Eficacia 4/6 = 67 % tras cerrar DEF-004; sube a 100 % cuando se cierren DEF-005 y DEF-006.
+\* Eficacia: con DEF-004/005/006 cerrados en código → **6/6 = 100 %**.
 
 Detalle backend ciclo 2: repo API `docs/backend/metricas-ciclo-2.md`.  
 Tabla viva del equipo: `docs/calidad/metricas.md`.
@@ -563,16 +567,16 @@ Tabla viva del equipo: `docs/calidad/metricas.md`.
    error de redondeo de un centavo.
 5. **DEF-004** (500 con números enormes) se corrigió y verificó; la robustez ante extremos
    pasó de 20 % a 100 %.
-6. **Las pruebas exploratorias** encontraron defectos que la suite inicial no cubría
+6. **DEF-005 y DEF-006** quedaron corregidos en el Frontend Next.js (mensaje de error
+   de servidor vs sin conexión, y separador de miles en monto).
+7. **Las pruebas exploratorias** encontraron defectos que la suite inicial no cubría
    (valores extremos y mensajes de UI).
 
 ## 10.2 Recomendaciones
 
-1. Cerrar **DEF-005** y **DEF-006** en Frontend y quitar sus `xfail` en el mismo PR.
-2. Completar la columna **Ciclo 2** de `docs/calidad/metricas.md` (usabilidad, densidad,
-   eficacia, portabilidad Windows del front).
-3. Exportar este informe a PDF para la entrega formal (partir de `INFORME-TECNICO.md`).
-4. Adjuntar captura actualizada de cobertura (Actions artifact o `coverage-html`).
+1. Completar la columna **Ciclo 2** de `docs/calidad/metricas.md` (densidad,
+   portabilidad Windows del front) y alinear `xfail` E2E del repo API si aún quedan.
+2. Adjuntar captura actualizada de cobertura (Actions artifact o `coverage-html`).
 
 ## 10.3 Cumplimiento explícito del enunciado
 

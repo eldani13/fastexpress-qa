@@ -12,16 +12,16 @@
    error de redondeo de un centavo.
 5. **DEF-004** (500 con números enormes) se corrigió y verificó; la robustez ante extremos
    pasó de 20 % a 100 %.
-6. **Las pruebas exploratorias** encontraron defectos que la suite inicial no cubría
+6. **DEF-005 y DEF-006** quedaron corregidos en el Frontend Next.js (mensaje de error
+   de servidor vs sin conexión, y separador de miles en monto).
+7. **Las pruebas exploratorias** encontraron defectos que la suite inicial no cubría
    (valores extremos y mensajes de UI).
 
 ## 10.2 Recomendaciones
 
-1. Cerrar **DEF-005** y **DEF-006** en Frontend y quitar sus `xfail` en el mismo PR.
-2. Completar la columna **Ciclo 2** de `docs/calidad/metricas.md` (usabilidad, densidad,
-   eficacia, portabilidad Windows del front).
-3. Exportar este informe a PDF para la entrega formal (partir de `INFORME-TECNICO.md`).
-4. Adjuntar captura actualizada de cobertura (Actions artifact o `coverage-html`).
+1. Completar la columna **Ciclo 2** de `docs/calidad/metricas.md` (densidad,
+   portabilidad Windows del front) y alinear `xfail` E2E del repo API si aún quedan.
+2. Adjuntar captura actualizada de cobertura (Actions artifact o `coverage-html`).
 
 ## 10.3 Cumplimiento explícito del enunciado
 
