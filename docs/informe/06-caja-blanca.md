@@ -6,7 +6,7 @@ cobertura de caminos independientes.
 El algoritmo se dividió en dos funciones con V(G) = 6 y 7; sus **13 caminos independientes**
 tienen cada uno una prueba automatizada y las 13 se aprobaron (ciclo 1).
 Se separó validación y cálculo para que cada grafo sea legible y ninguna función supere
-el umbral de McCabe (V(G) ? 10). En el código, las decisiones llevan comentarios `# D1`, `# D2`…
+el umbral de McCabe (V(G) ≤ 10). En el código, las decisiones llevan comentarios `# D1`, `# D2`…
 
 **Archivo de pruebas:** `tests/unit/test_caja_blanca.py`
 
@@ -65,13 +65,13 @@ Los tres métodos dan el mismo resultado. `radon cc` confirma: `calcular_tarifa 
 
 | Método | Fórmula | Datos | Resultado |
 |---|---|---|---|
-| Aristas y nodos | V(G) = E ? N + 2 | E = 20, N = 16 | **6** |
+| Aristas y nodos | V(G) = E − N + 2 | E = 20, N = 16 | **6** |
 | Nodos predicado | V(G) = P + 1 | P = 5 (nodos 2, 5, 7, 10, 13) | **6** |
 | Regiones | V(G) = regiones | 5 cerradas + 1 exterior | **6** |
 
 ### Caminos independientes — `calcular_tarifa`
 
-V(G) = 6 ? se necesitan **6 caminos**. C1 es el camino base; cada camino siguiente cambia una decisión.
+V(G) = 6 → se necesitan **6 caminos**. C1 es el camino base; cada camino siguiente cambia una decisión.
 
 | Camino | Secuencia de nodos | Decisión que cambia | Entrada (peso, cliente, envío, monto) | Total | Prueba | Estado |
 |---|---|---|---|---|---|---|
@@ -90,7 +90,7 @@ V(G) = 6 ? se necesitan **6 caminos**. C1 es el camino base; cada camino siguien
 4  if peso < mínimo:                  # D2 ? 5 error
 6  if peso > máximo:                  # D3 ? 7 rechazo
 8  if más de 2 decimales en monto:    # D4 ? 9 error
-10 if monto < mínimo:                 # D5 ? 11 error
+10 if monto < mínimo:                 # D5 → 11 error
 12 if monto > máximo:                 # D6 ? 13 rechazo
 14 return peso, monto cuantizados
 15 fin (todas las salidas llegan aquí)
@@ -128,7 +128,7 @@ flowchart TD
 
 | Método | Fórmula | Datos | Resultado |
 |---|---|---|---|
-| Aristas y nodos | V(G) = E ? N + 2 | E = 20, N = 15 | **7** |
+| Aristas y nodos | V(G) = E − N + 2 | E = 20, N = 15 | **7** |
 | Nodos predicado | V(G) = P + 1 | P = 6 | **7** |
 | Regiones | V(G) = regiones | 6 cerradas + 1 exterior | **7** |
 

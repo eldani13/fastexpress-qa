@@ -29,14 +29,14 @@ Valores neutros al aislar un campo:
 
 | ID | Límite analizado | Entrada (kg) | Tarifa | Resultado esperado | Estado |
 |---|---|---|---|---|---|
-| BVA-01 | Mínimo ? 0.01 | 0.00 | — | Error `PESO_INVALIDO` | Aprobado |
+| BVA-01 | Mínimo − 0.01 | 0.00 | — | Error `PESO_INVALIDO` | Aprobado |
 | BVA-02 | Mínimo | 0.01 | $2/kg | $5.02 | Aprobado |
 | BVA-03 | Mínimo + 0.01 | 0.02 | $2/kg | $5.04 | Aprobado |
-| BVA-04 | Fin de tramo 1 ? 0.01 | 4.99 | $2/kg | $14.98 | Aprobado |
+| BVA-04 | Fin de tramo 1 − 0.01 | 4.99 | $2/kg | $14.98 | Aprobado |
 | BVA-05 | Fin de tramo 1 | 5.00 | $2/kg | $15.00 | Aprobado |
 | BVA-06 | Inicio de tramo 2 | 5.01 | $4/kg | $25.04 | Aprobado |
 | BVA-07 | Inicio de tramo 2 + 0.01 | 5.02 | $4/kg | $25.08 | Aprobado |
-| BVA-08 | Máximo ? 0.01 | 19.99 | $4/kg | $84.96 | Aprobado |
+| BVA-08 | Máximo − 0.01 | 19.99 | $4/kg | $84.96 | Aprobado |
 | BVA-09 | Máximo | 20.00 | $4/kg | $85.00 | Aprobado |
 | BVA-10 | Máximo + 0.01 | 20.01 | — | Rechazo `LIMITE_PESO_EXCEDIDO` | Aprobado |
 
@@ -47,7 +47,7 @@ de BR-02 (punto de mayor riesgo: usar `<` en vez de `<=`).
 
 | ID | Clase | Tipo | Entrada | Resultado esperado | Estado |
 |---|---|---|---|---|---|
-| CE-M1 | Monto ? 0 | Inválida | ?10 | Error `MONTO_INVALIDO` | Aprobado |
+| CE-M1 | Monto ≤ 0 | Inválida | -10 | Error `MONTO_INVALIDO` | Aprobado |
 | CE-M2 | 0.01 – 100.00 | Válida | 50 | Seguro $0.00, total $7.00 | Aprobado |
 | CE-M3 | 100.01 – 1,000.00 | Válida | 500 | Seguro $10.00, total $17.00 | Aprobado |
 | CE-M4 | Mayor a 1,000.00 | Inválida | 1,500 | Rechazo `LIMITE_MONTO_EXCEDIDO` | Aprobado |
@@ -60,14 +60,14 @@ de BR-02 (punto de mayor riesgo: usar `<` en vez de `<=`).
 
 | ID | Límite analizado | Entrada ($) | Seguro | Total esperado | Estado |
 |---|---|---|---|---|---|
-| BVA-M01 | Mínimo ? 0.01 | 0.00 | — | Error `MONTO_INVALIDO` | Aprobado |
+| BVA-M01 | Mínimo − 0.01 | 0.00 | — | Error `MONTO_INVALIDO` | Aprobado |
 | BVA-M02 | Mínimo | 0.01 | $0.00 | $7.00 | Aprobado |
 | BVA-M03 | Mínimo + 0.01 | 0.02 | $0.00 | $7.00 | Aprobado |
-| BVA-M04 | Umbral de seguro ? 0.01 | 99.99 | $0.00 | $7.00 | Aprobado |
+| BVA-M04 | Umbral de seguro − 0.01 | 99.99 | $0.00 | $7.00 | Aprobado |
 | BVA-M05 | Umbral de seguro | 100.00 | $0.00 | $7.00 | Aprobado |
 | BVA-M06 | Umbral de seguro + 0.01 | 100.01 | $2.00 | $9.00 | Aprobado |
 | BVA-M07 | Umbral de seguro + 0.02 | 100.02 | $2.00 | $9.00 | Aprobado |
-| BVA-M08 | Máximo ? 0.01 | 999.99 | $20.00 | $27.00 | Aprobado |
+| BVA-M08 | Máximo − 0.01 | 999.99 | $20.00 | $27.00 | Aprobado |
 | BVA-M09 | Máximo | 1,000.00 | $20.00 | $27.00 | Aprobado |
 | BVA-M10 | Máximo + 0.01 | 1,000.01 | — | Rechazo `LIMITE_MONTO_EXCEDIDO` | Aprobado |
 

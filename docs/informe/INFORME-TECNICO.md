@@ -156,14 +156,14 @@ Valores neutros al aislar un campo:
 
 | ID | Límite analizado | Entrada (kg) | Tarifa | Resultado esperado | Estado |
 |---|---|---|---|---|---|
-| BVA-01 | Mínimo ? 0.01 | 0.00 | — | Error `PESO_INVALIDO` | Aprobado |
+| BVA-01 | Mínimo − 0.01 | 0.00 | — | Error `PESO_INVALIDO` | Aprobado |
 | BVA-02 | Mínimo | 0.01 | $2/kg | $5.02 | Aprobado |
 | BVA-03 | Mínimo + 0.01 | 0.02 | $2/kg | $5.04 | Aprobado |
-| BVA-04 | Fin de tramo 1 ? 0.01 | 4.99 | $2/kg | $14.98 | Aprobado |
+| BVA-04 | Fin de tramo 1 − 0.01 | 4.99 | $2/kg | $14.98 | Aprobado |
 | BVA-05 | Fin de tramo 1 | 5.00 | $2/kg | $15.00 | Aprobado |
 | BVA-06 | Inicio de tramo 2 | 5.01 | $4/kg | $25.04 | Aprobado |
 | BVA-07 | Inicio de tramo 2 + 0.01 | 5.02 | $4/kg | $25.08 | Aprobado |
-| BVA-08 | Máximo ? 0.01 | 19.99 | $4/kg | $84.96 | Aprobado |
+| BVA-08 | Máximo − 0.01 | 19.99 | $4/kg | $84.96 | Aprobado |
 | BVA-09 | Máximo | 20.00 | $4/kg | $85.00 | Aprobado |
 | BVA-10 | Máximo + 0.01 | 20.01 | — | Rechazo `LIMITE_PESO_EXCEDIDO` | Aprobado |
 
@@ -174,7 +174,7 @@ de BR-02 (punto de mayor riesgo: usar `<` en vez de `<=`).
 
 | ID | Clase | Tipo | Entrada | Resultado esperado | Estado |
 |---|---|---|---|---|---|
-| CE-M1 | Monto ? 0 | Inválida | ?10 | Error `MONTO_INVALIDO` | Aprobado |
+| CE-M1 | Monto ≤ 0 | Inválida | -10 | Error `MONTO_INVALIDO` | Aprobado |
 | CE-M2 | 0.01 – 100.00 | Válida | 50 | Seguro $0.00, total $7.00 | Aprobado |
 | CE-M3 | 100.01 – 1,000.00 | Válida | 500 | Seguro $10.00, total $17.00 | Aprobado |
 | CE-M4 | Mayor a 1,000.00 | Inválida | 1,500 | Rechazo `LIMITE_MONTO_EXCEDIDO` | Aprobado |
@@ -187,14 +187,14 @@ de BR-02 (punto de mayor riesgo: usar `<` en vez de `<=`).
 
 | ID | Límite analizado | Entrada ($) | Seguro | Total esperado | Estado |
 |---|---|---|---|---|---|
-| BVA-M01 | Mínimo ? 0.01 | 0.00 | — | Error `MONTO_INVALIDO` | Aprobado |
+| BVA-M01 | Mínimo − 0.01 | 0.00 | — | Error `MONTO_INVALIDO` | Aprobado |
 | BVA-M02 | Mínimo | 0.01 | $0.00 | $7.00 | Aprobado |
 | BVA-M03 | Mínimo + 0.01 | 0.02 | $0.00 | $7.00 | Aprobado |
-| BVA-M04 | Umbral de seguro ? 0.01 | 99.99 | $0.00 | $7.00 | Aprobado |
+| BVA-M04 | Umbral de seguro − 0.01 | 99.99 | $0.00 | $7.00 | Aprobado |
 | BVA-M05 | Umbral de seguro | 100.00 | $0.00 | $7.00 | Aprobado |
 | BVA-M06 | Umbral de seguro + 0.01 | 100.01 | $2.00 | $9.00 | Aprobado |
 | BVA-M07 | Umbral de seguro + 0.02 | 100.02 | $2.00 | $9.00 | Aprobado |
-| BVA-M08 | Máximo ? 0.01 | 999.99 | $20.00 | $27.00 | Aprobado |
+| BVA-M08 | Máximo − 0.01 | 999.99 | $20.00 | $27.00 | Aprobado |
 | BVA-M09 | Máximo | 1,000.00 | $20.00 | $27.00 | Aprobado |
 | BVA-M10 | Máximo + 0.01 | 1,000.01 | — | Rechazo `LIMITE_MONTO_EXCEDIDO` | Aprobado |
 
@@ -246,7 +246,7 @@ cobertura de caminos independientes.
 El algoritmo se dividió en dos funciones con V(G) = 6 y 7; sus **13 caminos independientes**
 tienen cada uno una prueba automatizada y las 13 se aprobaron (ciclo 1).
 Se separó validación y cálculo para que cada grafo sea legible y ninguna función supere
-el umbral de McCabe (V(G) ? 10). En el código, las decisiones llevan comentarios `# D1`, `# D2`…
+el umbral de McCabe (V(G) ≤ 10). En el código, las decisiones llevan comentarios `# D1`, `# D2`…
 
 **Archivo de pruebas:** `tests/unit/test_caja_blanca.py`
 
@@ -305,13 +305,13 @@ Los tres métodos dan el mismo resultado. `radon cc` confirma: `calcular_tarifa 
 
 | Método | Fórmula | Datos | Resultado |
 |---|---|---|---|
-| Aristas y nodos | V(G) = E ? N + 2 | E = 20, N = 16 | **6** |
+| Aristas y nodos | V(G) = E − N + 2 | E = 20, N = 16 | **6** |
 | Nodos predicado | V(G) = P + 1 | P = 5 (nodos 2, 5, 7, 10, 13) | **6** |
 | Regiones | V(G) = regiones | 5 cerradas + 1 exterior | **6** |
 
 ### Caminos independientes — `calcular_tarifa`
 
-V(G) = 6 ? se necesitan **6 caminos**. C1 es el camino base; cada camino siguiente cambia una decisión.
+V(G) = 6 → se necesitan **6 caminos**. C1 es el camino base; cada camino siguiente cambia una decisión.
 
 | Camino | Secuencia de nodos | Decisión que cambia | Entrada (peso, cliente, envío, monto) | Total | Prueba | Estado |
 |---|---|---|---|---|---|---|
@@ -330,7 +330,7 @@ V(G) = 6 ? se necesitan **6 caminos**. C1 es el camino base; cada camino siguien
 4  if peso < mínimo:                  # D2 ? 5 error
 6  if peso > máximo:                  # D3 ? 7 rechazo
 8  if más de 2 decimales en monto:    # D4 ? 9 error
-10 if monto < mínimo:                 # D5 ? 11 error
+10 if monto < mínimo:                 # D5 → 11 error
 12 if monto > máximo:                 # D6 ? 13 rechazo
 14 return peso, monto cuantizados
 15 fin (todas las salidas llegan aquí)
@@ -368,7 +368,7 @@ flowchart TD
 
 | Método | Fórmula | Datos | Resultado |
 |---|---|---|---|
-| Aristas y nodos | V(G) = E ? N + 2 | E = 20, N = 15 | **7** |
+| Aristas y nodos | V(G) = E − N + 2 | E = 20, N = 15 | **7** |
 | Nodos predicado | V(G) = P + 1 | P = 6 | **7** |
 | Regiones | V(G) = regiones | 6 cerradas + 1 exterior | **7** |
 
@@ -434,8 +434,8 @@ Las pruebas de defectos abiertos usan `@pytest.mark.xfail(strict=True, raises=As
 
 ### Análisis (ciclo 1)
 
-- **Líneas:** 179/179 = **100 %** (? 85 % exigido).
-- **Ramas:** 27/28 = **96 %** (? 85 % exigido). `cotizador.py` tiene 26/26 ramas cubiertas
+- **Líneas:** 179/179 = **100 %** (≥ 85 % exigido).
+- **Ramas:** 27/28 = **96 %** (≥ 85 % exigido). `cotizador.py` tiene 26/26 ramas cubiertas
   (los 13 caminos de caja blanca recorren todas las decisiones).
 - La única rama parcial estaba en `main.py` (montaje del frontend si existe la carpeta):
   código de despliegue, no de negocio. Se dejó visible a propósito (sin `# pragma: no cover`).
@@ -451,18 +451,18 @@ Fuente: `fastexpress-api/docs/backend/metricas-ciclo-2.md` (medición de Backend
 
 | Indicador | Ciclo 1 | Ciclo 2 | Meta | ¿Cumple? |
 |---|---|---|---|---|
-| Cobertura de líneas | 100 % | **97.8 %** (178/182) | ? 85 % | Sí |
-| Cobertura de ramas | 96 % | **96.7 %** (29/30) | ? 85 % | Sí |
+| Cobertura de líneas | 100 % | **97.8 %** (178/182) | ≥ 85 % | Sí |
+| Cobertura de ramas | 96 % | **96.7 %** (29/30) | ≥ 85 % | Sí |
 | Pruebas suite principal | 290 + 3 xfail | **292** aprobadas, 0 xfail DEF-004 | — | Sí |
-| Complejidad máxima | 7 | 7 | ? 10 | Sí |
+| Complejidad máxima | 7 | 7 | ≤ 10 | Sí |
 
-**Nota:** la bajada de líneas 100 % ? 97.8 % se debe a que, con repos separados, las líneas
+**Nota:** la bajada de líneas 100 % → 97.8 % se debe a que, con repos separados, las líneas
 que servían el frontend estático en la API ya no se ejecutan. La lógica de negocio
 (`cotizador.py`) sigue en **100 %** de líneas y ramas.
 
 ## 7.4 Evidencia de pruebas de sistema
 
-- Cotización válida (UI-06): 10 kg, $250, FRECUENTE, EXPRESS ? total **$55.63**.
+- Cotización válida (UI-06): 10 kg, $250, FRECUENTE, EXPRESS → total **$55.63**.
 - Rechazo por peso (UI-05): 21 kg ? sello "Rechazado".
 - DEF-004 (ciclo 2): peso de 29 nueves ? **422** `LIMITE_PESO_EXCEDIDO` (antes 500).
   Evidencias: `docs/qa/evidencias/DEF-004-*.png`.
@@ -517,7 +517,7 @@ Niveles: **3** cumple la meta · **2** cerca · **1** no cumple o afecta el uso.
 | Funcionalidad | Completitud de reglas | 100 % | 5/5 | 3 | 5/5 | 3 |
 | Funcionalidad | Exactitud del cálculo | 100 % | 51/51 | 3 | (misma suite) | 3 |
 | Funcionalidad | Validación en servidor | 100 % | 4/4 | 3 | 4/4 | 3 |
-| Fiabilidad | Densidad de defectos | ? 10 / KLOC | 7.6 | 3 | pendiente consolidar | — |
+| Fiabilidad | Densidad de defectos | ≤ 10 / KLOC | 7.6 | 3 | pendiente consolidar | — |
 | Fiabilidad | Eficacia de corrección | 100 % al cierre | 3/6 = 50 % | 1 | 4/6 tras DEF-004* | 2* |
 | Fiabilidad | Robustez aleatoria | 100 % | 1000/1000 | 3 | 1000/1000 | 3 |
 | Fiabilidad | Robustez extremos | 100 % | 1/5 = 20 % | 1 | **5/5 = 100 %** | **3** |
@@ -525,13 +525,13 @@ Niveles: **3** cumple la meta · **2** cerca · **1** no cumple o afecta el uso.
 | Usabilidad | Errores que orientan | 100 % | 6/8 = 75 % | 1 | pendiente DEF-005/006 | — |
 | Usabilidad | Diseño adaptable | 100 % | 2/2 | 3 | — | — |
 | Eficiencia | Tiempo p95 | ? 500 ms | 2.1 ms | 3 | 1.24 ms | 3 |
-| Mantenibilidad | Complejidad máx. | ? 10 | 7 | 3 | 7 | 3 |
+| Mantenibilidad | Complejidad máx. | ≤ 10 | 7 | 3 | 7 | 3 |
 | Mantenibilidad | Centralización reglas | 100 % | 14/14 | 3 | 14/14 | 3 |
-| Mantenibilidad | Cobertura de ramas | ? 85 % | 96 % | 3 | 96.7 % | 3 |
+| Mantenibilidad | Cobertura de ramas | ≥ 85 % | 96 % | 3 | 96.7 % | 3 |
 | Mantenibilidad | Reglas con prueba | 100 % | 5/5 | 3 | 5/5 | 3 |
 | Portabilidad | SO verificados | 2 de 2 | Linux sí; Win. pendiente | — | Backend midió en Windows | — |
 
-\* Eficacia 4/6 ? 67 % tras cerrar DEF-004; sube a 100 % cuando se cierren DEF-005 y DEF-006.
+\* Eficacia 4/6 = 67 % tras cerrar DEF-004; sube a 100 % cuando se cierren DEF-005 y DEF-006.
 
 Detalle backend ciclo 2: repo API `docs/backend/metricas-ciclo-2.md`.  
 Tabla viva del equipo: `docs/calidad/metricas.md`.
@@ -581,7 +581,7 @@ Tabla viva del equipo: `docs/calidad/metricas.md`.
 | Caja negra EP + BVA (Peso y Monto) | Cubierto — §5 |
 | Tabla de decisión Cliente × Envío | Cubierto — §5.5 |
 | CFG + V(G) + caminos | Cubierto — §6 |
-| Cobertura ? 85 % con análisis | Cubierto — §7 |
+| Cobertura ≥ 85 % con análisis | Cubierto — §7 |
 
 
 ---

@@ -32,8 +32,8 @@ Las pruebas de defectos abiertos usan `@pytest.mark.xfail(strict=True, raises=As
 
 ### Análisis (ciclo 1)
 
-- **Líneas:** 179/179 = **100 %** (? 85 % exigido).
-- **Ramas:** 27/28 = **96 %** (? 85 % exigido). `cotizador.py` tiene 26/26 ramas cubiertas
+- **Líneas:** 179/179 = **100 %** (≥ 85 % exigido).
+- **Ramas:** 27/28 = **96 %** (≥ 85 % exigido). `cotizador.py` tiene 26/26 ramas cubiertas
   (los 13 caminos de caja blanca recorren todas las decisiones).
 - La única rama parcial estaba en `main.py` (montaje del frontend si existe la carpeta):
   código de despliegue, no de negocio. Se dejó visible a propósito (sin `# pragma: no cover`).
@@ -49,18 +49,18 @@ Fuente: `fastexpress-api/docs/backend/metricas-ciclo-2.md` (medición de Backend
 
 | Indicador | Ciclo 1 | Ciclo 2 | Meta | ¿Cumple? |
 |---|---|---|---|---|
-| Cobertura de líneas | 100 % | **97.8 %** (178/182) | ? 85 % | Sí |
-| Cobertura de ramas | 96 % | **96.7 %** (29/30) | ? 85 % | Sí |
+| Cobertura de líneas | 100 % | **97.8 %** (178/182) | ≥ 85 % | Sí |
+| Cobertura de ramas | 96 % | **96.7 %** (29/30) | ≥ 85 % | Sí |
 | Pruebas suite principal | 290 + 3 xfail | **292** aprobadas, 0 xfail DEF-004 | — | Sí |
-| Complejidad máxima | 7 | 7 | ? 10 | Sí |
+| Complejidad máxima | 7 | 7 | ≤ 10 | Sí |
 
-**Nota:** la bajada de líneas 100 % ? 97.8 % se debe a que, con repos separados, las líneas
+**Nota:** la bajada de líneas 100 % → 97.8 % se debe a que, con repos separados, las líneas
 que servían el frontend estático en la API ya no se ejecutan. La lógica de negocio
 (`cotizador.py`) sigue en **100 %** de líneas y ramas.
 
 ## 7.4 Evidencia de pruebas de sistema
 
-- Cotización válida (UI-06): 10 kg, $250, FRECUENTE, EXPRESS ? total **$55.63**.
+- Cotización válida (UI-06): 10 kg, $250, FRECUENTE, EXPRESS → total **$55.63**.
 - Rechazo por peso (UI-05): 21 kg ? sello "Rechazado".
 - DEF-004 (ciclo 2): peso de 29 nueves ? **422** `LIMITE_PESO_EXCEDIDO` (antes 500).
   Evidencias: `docs/qa/evidencias/DEF-004-*.png`.

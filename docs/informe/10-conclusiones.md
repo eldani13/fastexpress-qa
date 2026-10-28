@@ -30,4 +30,4 @@
 | Caja negra EP + BVA (Peso y Monto) | Cubierto — §5 |
 | Tabla de decisión Cliente × Envío | Cubierto — §5.5 |
 | CFG + V(G) + caminos | Cubierto — §6 |
-| Cobertura ? 85 % con análisis | Cubierto — §7 |
+| Cobertura ≥ 85 % con análisis | Cubierto — §7 |
